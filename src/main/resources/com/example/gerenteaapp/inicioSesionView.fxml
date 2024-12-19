@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="175.0" prefWidth="152.0" spacing="8" style="-fx-background-color: #bfab92;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.InicioSesionController">
+   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../images/logo.png" />
+      </image>
+   </ImageView>
+   <TextField fx:id="userText" alignment="CENTER" layoutX="65.0" layoutY="92.0" prefHeight="26.0" prefWidth="161.0" promptText="Izena" style="-fx-background-color: #f8f3e9;     -fx-min-height: 25px;     -fx-max-width: 180px;     -fx-max-height: 25px;" />
+   <PasswordField fx:id="pwdText" alignment="CENTER" layoutX="65.0" layoutY="92.0" prefHeight="26.0" prefWidth="161.0" promptText="Pasahitza" style="-fx-background-color: #f8f3e9;     -fx-min-height: 25px;     -fx-max-width: 180px;     -fx-max-height: 25px;" />
+   <Button fx:id="button" alignment="CENTER" layoutX="65.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#sesioaHasi" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #69472c;" text="Saioa hasi" textFill="WHITE" />
+</VBox>
