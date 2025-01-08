@@ -12,11 +12,17 @@
             <Font size="19.0" />
         </font>
     </Label>
-    <TableView layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
+    <TableView fx:id="tabla" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
         <columns>
-            <TableColumn fx:id="idColumn" text="ID" />
-            <TableColumn fx:id="numMesa" text="NumMesa" />
-            <TableColumn fx:id="numKomensal" text="NumKomensal" />
+            <TableColumn fx:id="columnId" text="ID" />
+            <TableColumn fx:id="columnDni" text="Dni" />
+            <TableColumn fx:id="columnIzena" text="Izena" />
+            <TableColumn fx:id="columnAbizena" text="Abizena" />
+            <TableColumn fx:id="columnPasahitza" text="Pasahitza" />
+            <TableColumn fx:id="columnKorreoa" text="Korreoa" />
+            <TableColumn fx:id="columnTelefonoa" text="Telefonoa" />
+            <TableColumn fx:id="columnPostua" text="Postua" />
+            <TableColumn fx:id="columnTxatBaimena" text="Txat baimena" />
         </columns>
     </TableView>
 </AnchorPane>

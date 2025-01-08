@@ -1,14 +1,60 @@
 package com.example.gerenteaapp;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LangileController extends BaseController {
+
+    @FXML
+    private TableView<Langilea> tabla;
+    @FXML
+    private TableColumn<Langilea, Integer> columnId;
+    @FXML
+    private TableColumn<Langilea, String> columnDni;
+    @FXML
+    private TableColumn<Langilea, String> columnIzena;
+    @FXML
+    private TableColumn<Langilea, String> columnAbizena;
+    @FXML
+    private TableColumn<Langilea, String> columnPasahitza;
+    @FXML
+    private TableColumn<Langilea, String> columnKorreoa;
+    @FXML
+    private TableColumn<Langilea, String> columnTelefonoa;
+    @FXML
+    private TableColumn<Langilea, String> columnPostua;
+    @FXML
+    private TableColumn<Langilea, Boolean> columnTxatBaimena;
+
+    @FXML
+    private ObservableList<Langilea> items;
+
+    @FXML
+    private void initialize() throws SQLException {
+
+        this.columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.columnDni.setCellValueFactory(new PropertyValueFactory<>("dni"));
+        this.columnIzena.setCellValueFactory(new PropertyValueFactory<>("izena"));
+        this.columnAbizena.setCellValueFactory(new PropertyValueFactory<>("abizena"));
+        this.columnPasahitza.setCellValueFactory(new PropertyValueFactory<>("pasahitza"));
+        this.columnKorreoa.setCellValueFactory(new PropertyValueFactory<>("korreoa"));
+        this.columnTelefonoa.setCellValueFactory(new PropertyValueFactory<>("telefonoa"));
+        this.columnPostua.setCellValueFactory(new PropertyValueFactory<>("postua"));
+        this.columnTxatBaimena.setCellValueFactory(new PropertyValueFactory<>("txatBaimena"));
+
+        items = LangileKudeaketa.langileaLortu();
+        this.tabla.setItems(items);
+    }
+
     @FXML
     private void gehitu() {
         try{

@@ -12,11 +12,11 @@
          <Font size="19.0" />
       </font>
    </Label>
-   <TableView layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
+   <TableView fx:id="tabla" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
       <columns>
-             <TableColumn fx:id="idColumn" text="ID" />
-             <TableColumn fx:id="numMesa" text="NumMesa" />
-             <TableColumn fx:id="numKomensal" text="NumKomensal" />
+             <TableColumn fx:id="columId" text="ID" />
+             <TableColumn fx:id="columNumeroMesa" text="NumMesa" />
+             <TableColumn fx:id="columKomensal" text="NumKomensal" />
       </columns>
    </TableView>
 </AnchorPane>

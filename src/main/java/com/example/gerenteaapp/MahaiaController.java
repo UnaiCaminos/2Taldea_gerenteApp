@@ -13,32 +13,30 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class MahaiaController extends BaseController {
 
     @FXML
-    private TableView<MahaiKudeaketa> tabla;
+    private TableView<Mahaia> tabla;
     @FXML
-    private TableColumn<MahaiKudeaketa, Integer> columId;
+    private TableColumn<Mahaia, Integer> columId;
     @FXML
-    private TableColumn<MahaiKudeaketa, Integer> columNumeroMesa;
+    private TableColumn<Mahaia, Integer> columNumeroMesa;
     @FXML
-    private TableColumn<MahaiKudeaketa, Integer> columKomensal;
+    private TableColumn<Mahaia, Integer> columKomensal;
     @FXML
-    private ObservableList<MahaiKudeaketa> items;
+    private ObservableList<Mahaia> items;
 
-
     @FXML
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private void initialize() throws SQLException {
 
         this.columId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        this.columNumeroMesa.setCellValueFactory(new PropertyValueFactory<>("numeroMesa"));
-        this.columKomensal.setCellValueFactory(new PropertyValueFactory<>("komensal"));
+        this.columNumeroMesa.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
+        this.columKomensal.setCellValueFactory(new PropertyValueFactory<>("kopurua"));
 
-        MahaiKudeaketa mahaiak = new MahaiKudeaketa();
-        items = mahaiak.getMahaiak();
-
+        items = MahaiKudeaketa.mahaiaLortu();
         this.tabla.setItems(items);
     }
 

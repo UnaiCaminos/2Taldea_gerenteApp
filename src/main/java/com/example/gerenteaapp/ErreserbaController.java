@@ -1,15 +1,57 @@
 package com.example.gerenteaapp;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ErreserbaController extends BaseController{
 
+    @FXML
+    private TableView<Erreserba> tabla;
+    @FXML
+    private TableColumn<Erreserba, Integer> idColumn;
+    @FXML
+    private TableColumn<Erreserba, String> izenaColumn;
+    @FXML
+    private TableColumn<Erreserba, Integer> numMesaColumn;
+    @FXML
+    private TableColumn<Erreserba, Data> dataColumn;
+    @FXML
+    private TableColumn<Erreserba, Integer> pertsonaKopColumn;
+    @FXML
+    private TableColumn<Erreserba, Boolean> kantzelatuaColumn;
+    @FXML
+    private TableColumn<Erreserba, Data> updateDataColumn;
+    @FXML
+    private TableColumn<Erreserba, String> updateByColumn;
+    @FXML
+    private ObservableList<Erreserba> items;
+
+    @FXML
+    private void initialize() throws SQLException {
+
+        this.idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.izenaColumn.setCellValueFactory(new PropertyValueFactory<>("izena"));
+        this.numMesaColumn.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
+        this.dataColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
+        this.pertsonaKopColumn.setCellValueFactory(new PropertyValueFactory<>("pertsonaKop"));
+        this.kantzelatuaColumn.setCellValueFactory(new PropertyValueFactory<>("kantzelatuta"));
+        this.updateDataColumn.setCellValueFactory(new PropertyValueFactory<>("updateData"));
+        this.updateByColumn.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
+
+        items = ErreserbaKudeaketa.erreserbaLortu();
+        this.tabla.setItems(items);
+    }
     @FXML
     private void gehitu() {
         try{

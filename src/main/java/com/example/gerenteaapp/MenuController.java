@@ -13,9 +13,6 @@ import java.io.IOException;
 public class MenuController extends BaseController {
 
     @FXML
-    private TableView<MahaiKudeaketa> mahaiTable;
-
-    @FXML
     private void langileKudeaketa(){
         try {
 
