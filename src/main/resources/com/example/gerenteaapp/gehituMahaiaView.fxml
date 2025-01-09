@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.GehituController">
-    <Button fx:id="button1" alignment="CENTER" layoutX="243.0" layoutY="245.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Gehitu" textFill="WHITE" />
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.GehituMahaiaController">
+    <Button fx:id="button1" alignment="CENTER" layoutX="243.0" layoutY="245.0" mnemonicParsing="false" onAction="#gehitu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Gehitu" textFill="WHITE" />
     <Button fx:id="button3" alignment="CENTER" layoutX="471.0" layoutY="368.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336;" text="Itxi" textFill="WHITE" />
     <Label layoutX="218.0" layoutY="60.0" text="Mahaiak gehitu">
         <font>
             <Font size="19.0" />
         </font>
     </Label>
-   <TextField layoutX="300.0" layoutY="135.0" />
-   <TextField layoutX="300.0" layoutY="174.0" />
+   <TextField fx:id="txtMahaiZenb" layoutX="300.0" layoutY="135.0" />
+   <TextField fx:id="txtKopurua" layoutX="300.0" layoutY="174.0" />
    <Label layoutX="179.0" layoutY="139.0" text="Mahaiaren zenbakia" />
    <Label layoutX="180.0" layoutY="178.0" text="Komentsal kopurua" />
 </AnchorPane>

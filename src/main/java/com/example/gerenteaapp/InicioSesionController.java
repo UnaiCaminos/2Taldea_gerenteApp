@@ -28,8 +28,8 @@ public class InicioSesionController extends BaseController{
             return;
         }
 
-        InicioSesion is = new InicioSesion();
-        boolean esValido = is.balioztatu(user, pwd);
+        LangileKudeaketa lk = new LangileKudeaketa();
+        boolean esValido = lk.balioztatu(user, pwd);
 
         if (esValido) {
             mostrarAlerta(AlertType.INFORMATION, "Arrakasta", "Saioa ondo hasi da", "Ongi etorri, " + user + "!");

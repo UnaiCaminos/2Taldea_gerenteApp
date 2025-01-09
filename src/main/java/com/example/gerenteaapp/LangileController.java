@@ -51,7 +51,7 @@ public class LangileController extends BaseController {
         this.columnPostua.setCellValueFactory(new PropertyValueFactory<>("postua"));
         this.columnTxatBaimena.setCellValueFactory(new PropertyValueFactory<>("txatBaimena"));
 
-        items = LangileKudeaketa.langileaLortu();
+        items = com.example.gerenteaapp.LangileKudeaketa.langileaLortu();
         this.tabla.setItems(items);
     }
 

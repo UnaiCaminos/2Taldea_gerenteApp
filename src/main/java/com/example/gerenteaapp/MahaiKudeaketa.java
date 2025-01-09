@@ -29,4 +29,29 @@ public class MahaiKudeaketa {
 
         return lista;
     }
+    public static boolean mahaiaGehitu(String mahaiZenb, int kop) {
+
+        String query = "INSERT INTO mahaia (mahaiZenbakia, kopurua) VALUES (?, ?)";
+        Connection conn = null;
+        try {
+
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, mahaiZenb);
+            stmt.setInt(2, kop);
+
+            stmt.executeUpdate();
+            int filasAfectadas = stmt.executeUpdate();
+
+            boolean insertExitoso = filasAfectadas > 0;
+
+            if (insertExitoso) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

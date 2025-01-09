@@ -3,10 +3,7 @@ package com.example.gerenteaapp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ErreserbaKudeaketa {
         public static ObservableList<Erreserba> erreserbaLortu() throws SQLException {
@@ -35,6 +32,23 @@ public class ErreserbaKudeaketa {
 
             return lista;
         }
+    public static void erreserbaGehitu(String izena, int mahaiZenbakia, Date data, int pertsonaKop){
 
+        String query = "INSERT INTO erreserba (izena, mahaiZenbakia, data, pertsonaKop, kantzelatuta) VALUES ( ?, ?, ?, ?, 0)";
+        Connection conn = null;
+        try {
+
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, izena);
+            stmt.setInt(2, mahaiZenbakia);
+            stmt.setDate(3, data);
+            stmt.setInt(4, pertsonaKop);
+
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

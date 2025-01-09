@@ -2,10 +2,8 @@ package com.example.gerenteaapp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 
 public class LangileKudeaketa {
     public static ObservableList<Langilea> langileaLortu() throws SQLException {
@@ -34,5 +32,51 @@ public class LangileKudeaketa {
         }
 
         return lista;
+    }
+    public static void langileaGehitu(String dni, String izena, String abizena, String pasahitza, String korreoa, String telefonoa, String postua) {
+
+        String query = "INSERT INTO langilea (dni, izena, abizena, pasahitza, korreoa, telefonoa, postua, txatBaimena) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+        Connection conn = null;
+        try {
+
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, dni);
+            stmt.setString(2, izena);
+            stmt.setString(3, abizena);
+            stmt.setString(4, pasahitza);
+            stmt.setString(5, korreoa);
+            stmt.setString(6, telefonoa);
+            stmt.setString(7, postua);
+
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public boolean balioztatu(String erabiltzailea, String pasahitza) {
+        boolean konexioa=false;
+        String query = "SELECT COUNT(*) FROM dberronka.langilea WHERE izena = ? AND pasahitza = ? AND postua = 'Gerentea'";
+        Connection conn = null;
+
+        try {
+
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, erabiltzailea);
+            stmt.setString(2, pasahitza);
+
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    //return rs.getInt(1) > 0;
+                    konexioa = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Arazoa emen dago");
+        }
+        return konexioa;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.gerenteaapp;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 public class MahaiaController extends BaseController {
 
@@ -44,9 +40,9 @@ public class MahaiaController extends BaseController {
     private void gehitu() {
         try{
 
-            FXMLLoader fxmlLoad1 = new FXMLLoader(getClass().getResource("gehituView.fxml"));
+            FXMLLoader fxmlLoad1 = new FXMLLoader(getClass().getResource("gehituMahaiaView.fxml"));
             Parent root = fxmlLoad1.load();
-            GehituController gc = fxmlLoad1.getController();
+            GehituMahaiaController gc = fxmlLoad1.getController();
             gc.setStage(usingStage);
 
             usingStage.setScene(new Scene(root));
