@@ -66,6 +66,10 @@ public class MenuController extends BaseController {
         }
     }
 
+    private void izena(){
+
+
+    }
     @FXML
     private void saioaItxi(){
         try {

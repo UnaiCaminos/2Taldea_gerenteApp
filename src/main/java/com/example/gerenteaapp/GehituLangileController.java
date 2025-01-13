@@ -35,9 +35,21 @@ public class GehituLangileController extends BaseController {
         String telefonoa = txtTelefonoa.getText();
         String postua = txtPostua.getText();
 
+        if (!isValidDNI(dni)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "DNI-ak 8 zenbaki eta letra bat izan behar ditu.");
+        }
+
+        if (!isValidName(izena)||!isValidName(abizena)||!isValidName(postua)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Izenean, abizenean eta postuan ezin da zenbakirik ez zeinurik egon .");
+        }
+
         if (dni.isEmpty() || izena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || korreoa.isEmpty() || telefonoa.isEmpty() || postua.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Gune guztiak bete behar dira.");
             return;
+        }
+
+        if (!isValidEmail(korreoa)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Gune guztiak bete behar dira.");
         }
 
         try {
@@ -62,6 +74,18 @@ public class GehituLangileController extends BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private boolean isValidDNI(String dni) {
+        String dniRegex = "\\d{8}[A-Za-z]";
+        return dni.matches(dniRegex);
+    }
+    private boolean isValidName(String izena) {
+        String nameRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$";
+        return izena.matches(nameRegex);
+    }
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";
+        return email.matches(emailRegex);
     }
     @FXML
     private void itxi() {

@@ -9,14 +9,13 @@ public class ErreserbaKudeaketa {
         public static ObservableList<Erreserba> erreserbaLortu() throws SQLException {
             ObservableList<Erreserba> lista = FXCollections.observableArrayList();
 
-            String query = "SELECT * FROM dberronka.erreserba";
+            String query = "SELECT izena, mahaiZenbakia, data, pertsonaKop, kantzelatuta, updateData, updateBy FROM dberronka.erreserba";
             try (Connection conn = DBconexion.getConnection();
                  Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery(query)) {
 
                 while (rs.next()) {
                     lista.add(new Erreserba(
-                            rs.getInt("id"),
                             rs.getString("izena"),
                             rs.getInt("mahaiZenbakia"),
                             rs.getDate("data"),

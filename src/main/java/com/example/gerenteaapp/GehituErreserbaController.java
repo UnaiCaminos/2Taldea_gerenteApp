@@ -32,6 +32,13 @@ public class GehituErreserbaController extends BaseController {
             return;
         }
 
+        if (isValidNum(mahaiZenb)||isValidNum(pertsonaKop)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Mahai zenbakia eta pertsona kopuruan ezin da letrarik egon.");
+        }
+
+        if (isValidDate(data)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Dataren formatua URTEA/HILABETEA/EGUNA izan behar da.");
+        }
         try {
             int zenb = Integer.parseInt(mahaiZenb);
             int kop = Integer.parseInt(pertsonaKop);
@@ -57,6 +64,14 @@ public class GehituErreserbaController extends BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private boolean isValidNum(String zenb) {
+        String zenbRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$";
+        return zenb.matches(zenbRegex);
+    }
+    private boolean isValidDate(String date) {
+        String dateRegex = "^\\d{4}/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$";
+        return date.matches(dateRegex);
     }
     @FXML
     private void itxi() {

@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Erreserba {
 
-        private int id;
         private String izena;
         private int mahaiZenbakia;
         private Date data;
@@ -13,9 +12,8 @@ public class Erreserba {
         private Date updateData;
         private String updateBy;
 
-        public Erreserba(int id, String izena, int mahaiZenbakia, Date data, int pertsonaKop, boolean kantzelatuta, Date updateData, String updateBy) {
+        public Erreserba(String izena, int mahaiZenbakia, Date data, int pertsonaKop, boolean kantzelatuta, Date updateData, String updateBy) {
 
-            this.id = id;
             this.izena = izena;
             this.mahaiZenbakia = mahaiZenbakia;
             this.data = data;
@@ -23,9 +21,6 @@ public class Erreserba {
             this.kantzelatuta = kantzelatuta;
             this.updateData = updateData;this.updateBy = updateBy;
         }
-
-        public int getId() { return id; }
-        public void setId(int id) { this.id = id; }
 
        public String getIzena() { return izena; }
        public void setIzena(String izena) { this.izena = izena; }

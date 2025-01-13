@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="449.0" prefWidth="600.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.MahaiaController">
     <Button fx:id="button1" alignment="CENTER" layoutX="441.0" layoutY="100.0" mnemonicParsing="false" onAction="#gehitu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Gehitu" textFill="WHITE" />
     <Button fx:id="button3" alignment="CENTER" layoutX="471.0" layoutY="368.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336;" text="Itxi" textFill="WHITE" />
@@ -14,9 +16,18 @@
    </Label>
    <TableView fx:id="tabla" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
       <columns>
-             <TableColumn fx:id="columId" text="ID" />
-             <TableColumn fx:id="columNumeroMesa" text="NumMesa" />
-             <TableColumn fx:id="columKomensal" text="NumKomensal" />
+          <TableColumn fx:id="columNumeroMesa" text="NumMesa" />
+          <TableColumn fx:id="columKomensal" text="NumKomensal" />
+          <TableColumn fx:id="columnaFotoActualizar" text="Actualizar">
+              <cellValueFactory>
+                  <PropertyValueFactory property="fotoActualizar"/>
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="columnaFotoBorrar" text="Ezabatu">
+              <cellValueFactory>
+                  <PropertyValueFactory property="Argazkia borratu"/>
+              </cellValueFactory>
+          </TableColumn>
       </columns>
    </TableView>
 </AnchorPane>

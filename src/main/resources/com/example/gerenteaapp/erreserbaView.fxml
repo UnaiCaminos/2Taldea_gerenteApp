@@ -14,7 +14,6 @@
     </Label>
     <TableView fx:id="tabla" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
         <columns>
-            <TableColumn fx:id="idColumn" text="ID" />
             <TableColumn fx:id="izenaColumn" text="Izena" />
             <TableColumn fx:id="numMesaColumn" text="Mahai zenbakia" />
             <TableColumn fx:id="dataColumn" text="Data" />

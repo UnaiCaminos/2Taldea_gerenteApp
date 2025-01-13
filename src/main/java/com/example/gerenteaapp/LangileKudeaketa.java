@@ -9,22 +9,20 @@ public class LangileKudeaketa {
     public static ObservableList<Langilea> langileaLortu() throws SQLException {
         ObservableList<Langilea> lista = FXCollections.observableArrayList();
 
-        String query = "SELECT * FROM dberronka.langilea";
+        String query = "SELECT dni, izena, abizena, pasahitza, korreoa, telefonoa, postua FROM dberronka.langilea";
         try (Connection conn = DBconexion.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
                 lista.add(new Langilea(
-                        rs.getInt("id"),
                         rs.getString("dni"),
                         rs.getString("izena"),
                         rs.getString("abizena"),
                         rs.getString("pasahitza"),
                         rs.getString("korreoa"),
                         rs.getString("telefonoa"),
-                        rs.getString("postua"),
-                        rs.getBoolean("txatBaimena")
+                        rs.getString("postua")
                 ));
             }
         } catch (ClassNotFoundException e) {

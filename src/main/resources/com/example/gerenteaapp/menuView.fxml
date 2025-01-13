@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.MenuController">
+<AnchorPane prefHeight="175.0" prefWidth="152.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.MenuController">
       <HBox alignment="CENTER" />
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../images/logo.png" />
+        </image>
+    </ImageView>
       <Button fx:id="button4" layoutX="486.0" layoutY="338.0" mnemonicParsing="false" onAction="#saioaItxi" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #F44336;" text="Saioa itxi" />
    <Label layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan" />
       <Button fx:id="button3" alignment="CENTER" layoutX="63.0" layoutY="121.0" mnemonicParsing="false" onAction="#langileKudeaketa" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #69472c;" text="Langileak kudeatu" textFill="WHITE" />

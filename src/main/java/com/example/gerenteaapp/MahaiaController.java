@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -28,7 +29,6 @@ public class MahaiaController extends BaseController {
     @FXML
     private void initialize() throws SQLException {
 
-        this.columId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.columNumeroMesa.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.columKomensal.setCellValueFactory(new PropertyValueFactory<>("kopurua"));
 

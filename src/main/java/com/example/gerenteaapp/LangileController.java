@@ -41,7 +41,6 @@ public class LangileController extends BaseController {
     @FXML
     private void initialize() throws SQLException {
 
-        this.columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.columnDni.setCellValueFactory(new PropertyValueFactory<>("dni"));
         this.columnIzena.setCellValueFactory(new PropertyValueFactory<>("izena"));
         this.columnAbizena.setCellValueFactory(new PropertyValueFactory<>("abizena"));
@@ -49,7 +48,6 @@ public class LangileController extends BaseController {
         this.columnKorreoa.setCellValueFactory(new PropertyValueFactory<>("korreoa"));
         this.columnTelefonoa.setCellValueFactory(new PropertyValueFactory<>("telefonoa"));
         this.columnPostua.setCellValueFactory(new PropertyValueFactory<>("postua"));
-        this.columnTxatBaimena.setCellValueFactory(new PropertyValueFactory<>("txatBaimena"));
 
         items = com.example.gerenteaapp.LangileKudeaketa.langileaLortu();
         this.tabla.setItems(items);

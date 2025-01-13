@@ -11,14 +11,13 @@ public class MahaiKudeaketa {
     public static ObservableList<Mahaia> mahaiaLortu() throws SQLException {
         ObservableList<Mahaia> lista = FXCollections.observableArrayList();
 
-        String query = "SELECT * FROM dberronka.mahaia";
+        String query = "SELECT mahaiZenbakia, kopurua FROM dberronka.mahaia";
         try (Connection conn = DBconexion.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
                 lista.add(new Mahaia(
-                        rs.getInt("id"),
                         rs.getInt("mahaiZenbakia"),
                         rs.getInt("kopurua")
                 ));

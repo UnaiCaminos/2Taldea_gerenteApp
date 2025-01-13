@@ -19,8 +19,6 @@ public class ErreserbaController extends BaseController{
     @FXML
     private TableView<Erreserba> tabla;
     @FXML
-    private TableColumn<Erreserba, Integer> idColumn;
-    @FXML
     private TableColumn<Erreserba, String> izenaColumn;
     @FXML
     private TableColumn<Erreserba, Integer> numMesaColumn;
@@ -40,7 +38,6 @@ public class ErreserbaController extends BaseController{
     @FXML
     private void initialize() throws SQLException {
 
-        this.idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.izenaColumn.setCellValueFactory(new PropertyValueFactory<>("izena"));
         this.numMesaColumn.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.dataColumn.setCellValueFactory(new PropertyValueFactory<>("data"));

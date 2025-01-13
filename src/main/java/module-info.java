@@ -12,6 +12,7 @@ module com.example.gerenteaapp {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires java.xml.crypto;
+    requires java.desktop;
 
     opens com.example.gerenteaapp to javafx.fxml;
     exports com.example.gerenteaapp;

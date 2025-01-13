@@ -26,6 +26,10 @@ public class GehituMahaiaController extends BaseController {
                 return;
             }
 
+            if (isValidNum(mahaiZenb)||isValidNum(pertsonaKop)) {
+               showAlert(Alert.AlertType.ERROR, "Error", "Mahai zenbakia eta pertsona kopuruan ezin da letrarik egon.");
+            }
+
             try {
                 int kop = Integer.parseInt(kopurua);
                 MahaiKudeaketa m = new MahaiKudeaketa();
@@ -52,7 +56,10 @@ public class GehituMahaiaController extends BaseController {
             }
 
     }
-
+    private boolean isValidNum(String zenb) {
+        String zenbRegex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$";
+        return zenb.matches(zenbRegex);
+    }
     @FXML
     private void itxi() {
         try {
