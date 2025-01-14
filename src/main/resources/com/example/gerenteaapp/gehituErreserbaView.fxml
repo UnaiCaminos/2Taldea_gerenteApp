@@ -4,14 +4,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.GehituErreserbaController">
-    <Button fx:id="button1" alignment="CENTER" layoutX="252.0" layoutY="295.0" mnemonicParsing="false" onAction="#gehitu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Gehitu" textFill="WHITE" />
-    <Button fx:id="button3" alignment="CENTER" layoutX="471.0" layoutY="353.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336;" text="Itxi" textFill="WHITE" />
+    <Button fx:id="button1" alignment="CENTER" layoutX="252.0" layoutY="295.0" mnemonicParsing="false" onAction="#gehitu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #f44336;" text="Gehitu" textFill="WHITE" />
+    <Button fx:id="button3" alignment="CENTER" layoutX="471.0" layoutY="353.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #4caf50;" text="Itxi" textFill="WHITE" />
     <Label layoutX="218.0" layoutY="60.0" text="Erreserbak gehitu">
         <font>
             <Font size="19.0" />
         </font>
     </Label>
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../images/logo.png" />
+        </image>
+    </ImageView>
+    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+        <font>
+            <Font size="16.0" />
+        </font></Label>
     <TextField fx:id="txtIzena" layoutX="300.0" layoutY="130.0" />
     <TextField fx:id="txtMahaiZenb" layoutX="300.0" layoutY="158.0" />
     <Label layoutX="179.0" layoutY="130.0" text="Izena" />

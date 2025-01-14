@@ -1,6 +1,7 @@
 package com.example.gerenteaapp;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -62,6 +63,7 @@ public class LangileController extends BaseController {
             GehituLangileController glc = loada.getController();
             glc.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Mahaia gehitu");
             usingStage.show();
@@ -80,6 +82,7 @@ public class LangileController extends BaseController {
             MenuController mnc = loadx.getController();
             mnc.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Menua");
             usingStage.show();
@@ -89,5 +92,10 @@ public class LangileController extends BaseController {
         }
 
     }
+    @FXML
+    private void kendu() {}
+
+    @FXML
+    private void aldatu() {}
 
 }

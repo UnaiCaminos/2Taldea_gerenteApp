@@ -67,6 +67,7 @@ public class GehituLangileController extends BaseController {
             LangileController lc = xload.getController();
             lc.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Langileen kudeaketa");
             usingStage.show();
@@ -96,6 +97,7 @@ public class GehituLangileController extends BaseController {
             LangileController lc = fLoad.getController();
             lc.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Langileen kudeaketa");
             usingStage.show();

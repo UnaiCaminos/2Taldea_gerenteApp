@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -12,7 +14,16 @@
             <Font size="19.0" />
         </font>
     </Label>
-    <TableView fx:id="tabla" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../images/logo.png" />
+        </image>
+    </ImageView>
+    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+      <font>
+         <Font size="16.0" />
+      </font></Label>
+    <TableView fx:id="tabla" editable="true" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
         <columns>
             <TableColumn fx:id="columnDni" text="Dni" />
             <TableColumn fx:id="columnIzena" text="Izena" />
@@ -22,5 +33,10 @@
             <TableColumn fx:id="columnTelefonoa" text="Telefonoa" />
             <TableColumn fx:id="columnPostua" text="Postua" />
         </columns>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
     </TableView>
+    <Button fx:id="button2" alignment="CENTER" layoutX="441.0" layoutY="145.0" mnemonicParsing="false" onAction="#kendu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Kendu" textFill="WHITE" />
+    <Button fx:id="button0" alignment="CENTER" layoutX="441.0" layoutY="189.0" mnemonicParsing="false" onAction="#aldatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Aldatu" textFill="WHITE" />
 </AnchorPane>

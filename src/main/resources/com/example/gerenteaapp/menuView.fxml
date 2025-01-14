@@ -4,6 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="175.0" prefWidth="152.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.MenuController">
       <HBox alignment="CENTER" />
     <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
@@ -12,7 +13,10 @@
         </image>
     </ImageView>
       <Button fx:id="button4" layoutX="486.0" layoutY="338.0" mnemonicParsing="false" onAction="#saioaItxi" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #F44336;" text="Saioa itxi" />
-   <Label layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan" />
+    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+        <font>
+            <Font size="16.0" />
+        </font></Label>
       <Button fx:id="button3" alignment="CENTER" layoutX="63.0" layoutY="121.0" mnemonicParsing="false" onAction="#langileKudeaketa" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #69472c;" text="Langileak kudeatu" textFill="WHITE" />
       <Button fx:id="button2" alignment="CENTER" layoutX="225.0" layoutY="121.0" mnemonicParsing="false" onAction="#mahaiKudeaketa" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #69472c;" text="Mahaiak kudeatu" textFill="WHITE" />
       <Button fx:id="button1" alignment="CENTER" layoutX="390.0" layoutY="121.0" mnemonicParsing="false" onAction="#erreserbaKudeaketa" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #69472c;" text="Erreserbak kudeatu" textFill="WHITE" />

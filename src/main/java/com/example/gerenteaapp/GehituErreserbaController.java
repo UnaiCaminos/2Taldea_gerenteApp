@@ -57,6 +57,7 @@ public class GehituErreserbaController extends BaseController {
             ErreserbaController ec = xload.getController();
             ec.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Erreserben kudeaketa");
             usingStage.show();
@@ -82,6 +83,7 @@ public class GehituErreserbaController extends BaseController {
             ErreserbaController ec = load0.getController();
             ec.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Mahaien kudeaketa");
             usingStage.show();

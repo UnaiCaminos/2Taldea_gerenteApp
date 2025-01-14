@@ -5,19 +5,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 import javax.xml.crypto.Data;
+import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class ErreserbaController extends BaseController{
-
+public class ErreserbaKenduController extends BaseController{
+    @FXML
+    private TextField txtId;
     @FXML
     private TableView<Erreserba> tabla;
+    @FXML
+    private TableColumn<Erreserba, String> idColumn;
     @FXML
     private TableColumn<Erreserba, String> izenaColumn;
     @FXML
@@ -38,6 +42,7 @@ public class ErreserbaController extends BaseController{
     @FXML
     private void initialize() throws SQLException {
 
+        this.idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.izenaColumn.setCellValueFactory(new PropertyValueFactory<>("izena"));
         this.numMesaColumn.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.dataColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
@@ -49,36 +54,19 @@ public class ErreserbaController extends BaseController{
         items = ErreserbaKudeaketa.erreserbaLortu();
         this.tabla.setItems(items);
     }
-    @FXML
-    private void gehitu() {
-        try{
-            FXMLLoader load11 = new FXMLLoader(getClass().getResource("gehituErreserbaView.fxml"));
-            Parent root = load11.load();
-            GehituErreserbaController gec = load11.getController();
-            gec.setStage(usingStage);
-
-            usingStage.centerOnScreen();
-            usingStage.setScene(new Scene(root));
-            usingStage.setTitle("Erreserba gehitu");
-            usingStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     private void itxi() {
         try{
 
-            FXMLLoader load2 = new FXMLLoader(getClass().getResource("menuView.fxml"));
+            FXMLLoader load2 = new FXMLLoader(getClass().getResource("erreserbaView.fxml"));
             Parent root = load2.load();
-            MenuController mnc = load2.getController();
-            mnc.setStage(usingStage);
+            ErreserbaController ec = load2.getController();
+            ec.setStage(usingStage);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
-            usingStage.setTitle("Menua");
+            usingStage.setTitle("Erreserba");
             usingStage.show();
 
         } catch (IOException e) {
@@ -87,39 +75,44 @@ public class ErreserbaController extends BaseController{
 
     }
     @FXML
-    private void kendu() {
+    private void ezabatu() {
+        String id = txtId.getText();
+
+        if (id.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Gune guztiak bete behar dira.");
+            return;
+        }
+
+        try {
+            int zenb = Integer.parseInt(id);
+            ErreserbaKudeaketa m = new ErreserbaKudeaketa();
+            m.erreserbaKendu(zenb);
+            showAlert(Alert.AlertType.INFORMATION, "Ondo", "Datuak zuzen borratu dira.");
+
+        } catch (NumberFormatException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Id-a zenbakia izan behar da.");
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error", e.getMessage());
+        }
         try{
-            FXMLLoader load11 = new FXMLLoader(getClass().getResource("erreserbaKenduView.fxml"));
-            Parent root = load11.load();
-            ErreserbaKenduController gec = load11.getController();
-            gec.setStage(usingStage);
+            FXMLLoader xload = new FXMLLoader(getClass().getResource("erreserbaView.fxml"));
+            Parent root = xload.load();
+            ErreserbaController mhc = xload.getController();
+            mhc.setStage(usingStage);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
-            usingStage.setTitle("Erreserba kendu");
+            usingStage.setTitle("Erreserben kudeaketa");
             usingStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    @FXML
-    private void aldatu() {
-        try{
-            FXMLLoader load11 = new FXMLLoader(getClass().getResource("erreserbaAldatuView.fxml"));
-            Parent root = load11.load();
-            ErreserbaAldatuController gec = load11.getController();
-            gec.setStage(usingStage);
-
-            usingStage.centerOnScreen();
-            usingStage.setScene(new Scene(root));
-            usingStage.setTitle("Erreserba aldatu");
-            usingStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
-
 }

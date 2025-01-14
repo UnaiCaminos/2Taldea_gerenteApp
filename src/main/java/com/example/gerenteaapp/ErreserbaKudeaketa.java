@@ -9,13 +9,14 @@ public class ErreserbaKudeaketa {
         public static ObservableList<Erreserba> erreserbaLortu() throws SQLException {
             ObservableList<Erreserba> lista = FXCollections.observableArrayList();
 
-            String query = "SELECT izena, mahaiZenbakia, data, pertsonaKop, kantzelatuta, updateData, updateBy FROM dberronka.erreserba";
+            String query = "SELECT * FROM dberronka.erreserba";
             try (Connection conn = DBconexion.getConnection();
                  Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery(query)) {
 
                 while (rs.next()) {
                     lista.add(new Erreserba(
+                            rs.getInt("id"),
                             rs.getString("izena"),
                             rs.getInt("mahaiZenbakia"),
                             rs.getDate("data"),
@@ -50,4 +51,54 @@ public class ErreserbaKudeaketa {
         }
     }
 
+    public static boolean erreserbaKendu(int id) {
+
+        String query = "DELETE FROM erreserba WHERE id = ?";
+        Connection conn = null;
+        try{
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, id);
+            int rowsAffected = stmt.executeUpdate();
+
+            boolean deleteExitoso = rowsAffected > 0;
+
+            if (deleteExitoso) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static boolean erreserbaAldatu(String izena, int mahaiZenb, Date data, int pertsonaKop, boolean kantzelatuta, String updateBy, int id) throws SQLException {
+
+        String query = "UPDATE erreserba SET izena = ?, mahaiZenbakia = ?, data = ?, pertsonaKop = ?, kantzelatuta = ?, updateBy = ? WHERE id = ?";
+        Connection conn = null;
+        try{
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, izena);
+            stmt.setInt(2, mahaiZenb);
+            stmt.setDate(3, data);
+            stmt.setInt(4, pertsonaKop);
+            stmt.setBoolean(5, kantzelatuta);
+            stmt.setString(6, updateBy);
+            stmt.setInt(7,id);
+            int rowsAffected = stmt.executeUpdate();
+
+            boolean updateExitoso = rowsAffected > 0;
+
+            if (updateExitoso) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

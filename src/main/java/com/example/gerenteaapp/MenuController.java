@@ -4,10 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class MenuController extends BaseController {
@@ -21,6 +19,7 @@ public class MenuController extends BaseController {
             LangileController lc = loader1.getController();
             lc.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Langile kudeaketa");
             usingStage.show();
@@ -39,6 +38,7 @@ public class MenuController extends BaseController {
             MahaiaController mc = loader2.getController();
             mc.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Mahaien kudeaketa");
             usingStage.show();
@@ -57,6 +57,7 @@ public class MenuController extends BaseController {
             ErreserbaController ec = loader3.getController();
             ec.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Erreserba kudeaketa");
             usingStage.show();
@@ -66,10 +67,6 @@ public class MenuController extends BaseController {
         }
     }
 
-    private void izena(){
-
-
-    }
     @FXML
     private void saioaItxi(){
         try {
@@ -79,6 +76,7 @@ public class MenuController extends BaseController {
             InicioSesionController ic = loader4.getController();
             ic.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Saioa hasi");
             usingStage.show();

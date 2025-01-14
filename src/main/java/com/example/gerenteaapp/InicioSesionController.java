@@ -40,6 +40,7 @@ public class InicioSesionController extends BaseController{
                 MenuController mc = loader.getController();
                 mc.setStage(usingStage);
 
+                usingStage.centerOnScreen();
                 usingStage.setScene(new Scene(root));
                 usingStage.setTitle("Menua");
                 usingStage.show();

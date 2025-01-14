@@ -7,6 +7,7 @@ import javafx.beans.property.IntegerProperty;
 
 public class Langilea{
 
+    private int id;
     private String dni;
     private String izena;
     private String abizena;
@@ -15,8 +16,9 @@ public class Langilea{
     private String telefonoa;
     private String postua;
 
-    public Langilea(String dni, String izena, String abizena, String pasahitza, String korreoa, String telefonoa, String postua) {
+    public Langilea(int id, String dni, String izena, String abizena, String pasahitza, String korreoa, String telefonoa, String postua) {
 
+        this.id = id;
         this.dni = dni;
         this.izena = izena;
         this.abizena = abizena;
@@ -25,6 +27,9 @@ public class Langilea{
         this.telefonoa = telefonoa;
         this.postua = postua;
     }
+
+    public int getId() {return id;}
+    public void setId(int id) {this.id = id;}
 
     public String getDni() {return dni;}
     public void setDni(String dni) {this.dni = dni;}

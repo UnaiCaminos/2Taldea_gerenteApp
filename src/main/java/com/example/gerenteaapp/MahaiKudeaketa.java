@@ -11,13 +11,14 @@ public class MahaiKudeaketa {
     public static ObservableList<Mahaia> mahaiaLortu() throws SQLException {
         ObservableList<Mahaia> lista = FXCollections.observableArrayList();
 
-        String query = "SELECT mahaiZenbakia, kopurua FROM dberronka.mahaia";
+        String query = "SELECT * FROM dberronka.mahaia";
         try (Connection conn = DBconexion.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
                 lista.add(new Mahaia(
+                        rs.getInt ("id"),
                         rs.getInt("mahaiZenbakia"),
                         rs.getInt("kopurua")
                 ));
@@ -53,4 +54,72 @@ public class MahaiKudeaketa {
             throw new RuntimeException(e);
         }
     }
+
+    public static ObservableList<Mahaia> mahaiaBilatu() throws SQLException {
+        ObservableList<Mahaia> lista = FXCollections.observableArrayList();
+
+        String query = "SELECT * FROM dberronka.mahaia WHERE izena = ?";
+        try (Connection conn = DBconexion.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                lista.add(new Mahaia(
+                        rs.getInt("id"),
+                        rs.getInt("mahaiZenbakia"),
+                        rs.getInt("kopurua")
+                ));
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Error de conexión a la base de datos", e);
+        }
+
+        return lista;
+    }
+    public static boolean mahaiaKendu(int id) {
+
+        String query = "DELETE FROM mahaia WHERE id = ?";
+        Connection conn = null;
+        try{
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, id);
+            int rowsAffected = stmt.executeUpdate();
+
+            boolean deleteExitoso = rowsAffected > 0;
+
+            if (deleteExitoso) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static boolean mahaiaAldatu(int id, int kopurua) {
+
+        String query = "UPDATE mahaia SET kopurua = ? WHERE id = ?";
+        Connection conn = null;
+        try{
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, kopurua);
+            stmt.setInt(2, id);
+            int rowsAffected = stmt.executeUpdate();
+
+            boolean updateExitoso = rowsAffected > 0;
+
+            if (updateExitoso) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

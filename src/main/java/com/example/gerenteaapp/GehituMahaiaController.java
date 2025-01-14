@@ -18,42 +18,43 @@ public class GehituMahaiaController extends BaseController {
     @FXML
     private void gehitu(){
 
-            String mahaiZenb = txtMahaiZenb.getText();
-            String kopurua = txtKopurua.getText();
+        String mahaiZenb = txtMahaiZenb.getText();
+        String kopurua = txtKopurua.getText();
 
-            if (mahaiZenb.isEmpty() || kopurua.isEmpty()) {
-                showAlert(Alert.AlertType.ERROR, "Error", "Gune guztiak bete behar dira.");
-                return;
-            }
+        if (mahaiZenb.isEmpty() || kopurua.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Gune guztiak bete behar dira.");
+            return;
+        }
 
-            if (isValidNum(mahaiZenb)||isValidNum(pertsonaKop)) {
-               showAlert(Alert.AlertType.ERROR, "Error", "Mahai zenbakia eta pertsona kopuruan ezin da letrarik egon.");
-            }
+        if (isValidNum(mahaiZenb)||isValidNum(kopurua)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Mahai zenbakia eta pertsona kopuruan ezin da letrarik egon.");
+        }
 
-            try {
-                int kop = Integer.parseInt(kopurua);
-                MahaiKudeaketa m = new MahaiKudeaketa();
-                m.mahaiaGehitu(mahaiZenb, kop);
-                showAlert(Alert.AlertType.INFORMATION, "Ondo", "Datuak zuzen sartu dira.");
+        try {
+            int kop = Integer.parseInt(kopurua);
+            MahaiKudeaketa m = new MahaiKudeaketa();
+            m.mahaiaGehitu(mahaiZenb, kop);
+            showAlert(Alert.AlertType.INFORMATION, "Ondo", "Datuak zuzen sartu dira.");
 
-            } catch (NumberFormatException e) {
-                showAlert(Alert.AlertType.ERROR, "Error", "Komentsal kopurua zenbakia izan behar da.");
-            } catch (Exception e) {
-                showAlert(Alert.AlertType.ERROR, "Error", "Arazoa datuak sartzerakoan: " + e.getMessage());
-            }
-            try{
-                FXMLLoader xload = new FXMLLoader(getClass().getResource("mahaiaView.fxml"));
-                Parent root = xload.load();
-                MahaiaController mhc = xload.getController();
-                mhc.setStage(usingStage);
+        } catch (NumberFormatException e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Komentsal kopurua zenbakia izan behar da.");
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Arazoa datuak sartzerakoan: " + e.getMessage());
+        }
+        try{
+            FXMLLoader xload = new FXMLLoader(getClass().getResource("mahaiaView.fxml"));
+            Parent root = xload.load();
+            MahaiaController mhc = xload.getController();
+            mhc.setStage(usingStage);
 
-                usingStage.setScene(new Scene(root));
-                usingStage.setTitle("Mahaien kudeaketa");
-                usingStage.show();
+            usingStage.centerOnScreen();
+            usingStage.setScene(new Scene(root));
+            usingStage.setTitle("Mahaien kudeaketa");
+            usingStage.show();
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     private boolean isValidNum(String zenb) {
@@ -69,6 +70,7 @@ public class GehituMahaiaController extends BaseController {
             MahaiaController mhc = xload.getController();
             mhc.setStage(usingStage);
 
+            usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
             usingStage.setTitle("Mahaien kudeaketa");
             usingStage.show();
