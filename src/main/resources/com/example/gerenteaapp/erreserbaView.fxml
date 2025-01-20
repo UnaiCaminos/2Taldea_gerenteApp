@@ -18,7 +18,7 @@
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="">
         <font>
             <Font size="16.0" />
         </font></Label>

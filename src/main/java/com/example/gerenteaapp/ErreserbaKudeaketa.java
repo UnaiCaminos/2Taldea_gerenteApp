@@ -73,9 +73,9 @@ public class ErreserbaKudeaketa {
             throw new RuntimeException(e);
         }
     }
-    public static boolean erreserbaAldatu(String izena, int mahaiZenb, Date data, int pertsonaKop, boolean kantzelatuta, String updateBy, int id) throws SQLException {
+    public static boolean erreserbaAldatu(String izena, int mahaiZenb, Date data, int pertsonaKop, boolean kantzelatuta, String updateBy, Date updateData, int id) throws SQLException {
 
-        String query = "UPDATE erreserba SET izena = ?, mahaiZenbakia = ?, data = ?, pertsonaKop = ?, kantzelatuta = ?, updateBy = ? WHERE id = ?";
+        String query = "UPDATE erreserba SET izena = ?, mahaiZenbakia = ?, data = ?, pertsonaKop = ?, kantzelatuta = ?, updateBy = ?, updateData = ? WHERE id = ?";
         Connection conn = null;
         try{
             conn = DBconexion.getConnection();
@@ -86,7 +86,8 @@ public class ErreserbaKudeaketa {
             stmt.setInt(4, pertsonaKop);
             stmt.setBoolean(5, kantzelatuta);
             stmt.setString(6, updateBy);
-            stmt.setInt(7,id);
+            stmt.setDate(7, updateData);
+            stmt.setInt(8,id);
             int rowsAffected = stmt.executeUpdate();
 
             boolean updateExitoso = rowsAffected > 0;

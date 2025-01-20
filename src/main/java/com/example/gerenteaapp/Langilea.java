@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.IntegerProperty;
 
+import java.sql.Date;
+
 public class Langilea{
 
     private int id;
@@ -15,8 +17,10 @@ public class Langilea{
     private String korreoa;
     private String telefonoa;
     private String postua;
+    private Date updateDate;
+    private String updateBy;
 
-    public Langilea(int id, String dni, String izena, String abizena, String pasahitza, String korreoa, String telefonoa, String postua) {
+    public Langilea(int id, String dni, String izena, String abizena, String pasahitza, String korreoa, String telefonoa, String postua, Date updateDate, String updateBy) {
 
         this.id = id;
         this.dni = dni;
@@ -26,6 +30,8 @@ public class Langilea{
         this.korreoa = korreoa;
         this.telefonoa = telefonoa;
         this.postua = postua;
+        this.updateDate = updateDate;
+        this.updateBy = updateBy;
     }
 
     public int getId() {return id;}
@@ -52,5 +58,10 @@ public class Langilea{
     public String getPostua() { return postua; }
     public void setPostua(String postua) {this.postua = postua;}
 
+    public String getUpdateBy() { return updateBy; }
+    public void setUpdateBy(String updateBy) {this.updateBy = updateBy;}
+
+    public Date getUpdateDate() { return updateDate; }
+    public void setUpdateDate(Date updateDate) {this.updateDate = updateDate;}
 
 }

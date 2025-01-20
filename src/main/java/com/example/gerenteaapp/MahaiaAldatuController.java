@@ -5,14 +5,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.TextField;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class MahaiaAldatuController extends BaseController {
 
@@ -29,8 +29,18 @@ public class MahaiaAldatuController extends BaseController {
     @FXML
     private TableColumn<Mahaia, Integer> columKomensal;
     @FXML
+    private TableColumn<Mahaia, Data> updateDataColumn;
+    @FXML
+    private TableColumn<Mahaia, String> updateByColumn;
+    @FXML
     private ObservableList<Mahaia> items;
+    @FXML
+    Label lblUser;
 
+    String setErabiltzailea(String izena){
+        lblUser.setText(izena);
+        return izena;
+    }
     @FXML
     private void itxi() {
         try{
@@ -39,6 +49,8 @@ public class MahaiaAldatuController extends BaseController {
             Parent root = fxmlLoad.load();
             MahaiaController mnc = fxmlLoad.getController();
             mnc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mnc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -56,9 +68,12 @@ public class MahaiaAldatuController extends BaseController {
         this.columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.columNumeroMesa.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.columKomensal.setCellValueFactory(new PropertyValueFactory<>("kopurua"));
+        this.updateByColumn.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
+        this.updateDataColumn.setCellValueFactory(new PropertyValueFactory<>("updateData"));
 
         items = MahaiKudeaketa.mahaiaLortu();
         this.tabla.setItems(items);
+        setErabiltzailea(lblUser.getText());
     }
     @FXML
     private void aldatu() {
@@ -73,12 +88,15 @@ public class MahaiaAldatuController extends BaseController {
         if (isValidNum(kopurua)||isValidNum(Id)) {
             showAlert(Alert.AlertType.ERROR, "Error", "Mahai zenbakia eta pertsona kopuruan ezin da letrarik egon.");
         }
-
+        LocalDate timestamp = (LocalDate.now());
+        String updateBy = setErabiltzailea(lblUser.getText());
         try {
             int id = Integer.parseInt(Id);
             int zenb = Integer.parseInt(kopurua);
+            Date updateDate = Date.valueOf(timestamp);
+
             MahaiKudeaketa m = new MahaiKudeaketa();
-            m.mahaiaAldatu(id, zenb);
+            m.mahaiaAldatu(id, zenb, updateBy, updateDate);
             showAlert(Alert.AlertType.INFORMATION, "Ondo", "Datuak zuzen aldatu dira.");
 
         } catch (NumberFormatException e) {
@@ -91,6 +109,8 @@ public class MahaiaAldatuController extends BaseController {
             Parent root = xload.load();
             MahaiaController mhc = xload.getController();
             mhc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mhc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));

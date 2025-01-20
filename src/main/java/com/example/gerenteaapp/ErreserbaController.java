@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,7 +35,12 @@ public class ErreserbaController extends BaseController{
     private TableColumn<Erreserba, String> updateByColumn;
     @FXML
     private ObservableList<Erreserba> items;
+    @FXML
+    Label lblUser;
 
+    void setErabiltzailea(String izena){
+        lblUser.setText(izena);
+    }
     @FXML
     private void initialize() throws SQLException {
 
@@ -48,6 +54,7 @@ public class ErreserbaController extends BaseController{
 
         items = ErreserbaKudeaketa.erreserbaLortu();
         this.tabla.setItems(items);
+        setErabiltzailea(lblUser.getText());
     }
     @FXML
     private void gehitu() {
@@ -56,6 +63,9 @@ public class ErreserbaController extends BaseController{
             Parent root = load11.load();
             GehituErreserbaController gec = load11.getController();
             gec.setStage(usingStage);
+            String izena = lblUser.getText();
+            gec.setErabiltzailea(izena);
+
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -75,6 +85,9 @@ public class ErreserbaController extends BaseController{
             Parent root = load2.load();
             MenuController mnc = load2.getController();
             mnc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mnc.setErabiltzailea(izena);
+
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -93,6 +106,9 @@ public class ErreserbaController extends BaseController{
             Parent root = load11.load();
             ErreserbaKenduController gec = load11.getController();
             gec.setStage(usingStage);
+            String izena = lblUser.getText();
+            gec.setErabiltzailea(izena);
+
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -111,6 +127,9 @@ public class ErreserbaController extends BaseController{
             Parent root = load11.load();
             ErreserbaAldatuController gec = load11.getController();
             gec.setStage(usingStage);
+            String izena = lblUser.getText();
+            gec.setErabiltzailea(izena);
+
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));

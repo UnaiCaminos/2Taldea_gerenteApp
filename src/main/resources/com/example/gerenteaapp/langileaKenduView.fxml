@@ -17,7 +17,7 @@
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="592.0" layoutY="14.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+    <Label fx:id="lblUser" layoutX="592.0" layoutY="14.0" prefHeight="31.0" prefWidth="89.0" text="">
         <font>
             <Font size="16.0" />
         </font></Label>
@@ -30,6 +30,8 @@
             <TableColumn fx:id="columnKorreoa" text="Korreoa" />
             <TableColumn fx:id="columnTelefonoa" text="Telefonoa" />
             <TableColumn fx:id="columnPostua" text="Postua" />
+            <TableColumn fx:id="columnUpdateBy" text="Update By" />
+            <TableColumn fx:id="columnUpdateData" text="Update Data"/>
         </columns>
     </TableView>
     <Button fx:id="button2" alignment="CENTER" layoutX="545.0" layoutY="103.0" mnemonicParsing="false" onAction="#ezabatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Kendu" textFill="WHITE" />

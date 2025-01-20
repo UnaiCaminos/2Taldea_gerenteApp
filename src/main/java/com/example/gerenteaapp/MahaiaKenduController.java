@@ -5,12 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.TextField;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -27,8 +25,17 @@ public class MahaiaKenduController extends BaseController {
     @FXML
     private TableColumn<Mahaia, Integer> columKomensal;
     @FXML
+    private TableColumn<Mahaia, Data> updateDataColumn;
+    @FXML
+    private TableColumn<Mahaia, String> updateByColumn;
+    @FXML
     private ObservableList<Mahaia> items;
+    @FXML
+    Label lblUser;
 
+    void setErabiltzailea(String izena){
+        lblUser.setText(izena);
+    }
     @FXML
     private void itxi() {
         try{
@@ -37,6 +44,8 @@ public class MahaiaKenduController extends BaseController {
             Parent root = fxmlLoad.load();
             MenuController mnc = fxmlLoad.getController();
             mnc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mnc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -54,9 +63,12 @@ public class MahaiaKenduController extends BaseController {
         this.columId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.columNumeroMesa.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.columKomensal.setCellValueFactory(new PropertyValueFactory<>("kopurua"));
+        this.updateByColumn.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
+        this.updateDataColumn.setCellValueFactory(new PropertyValueFactory<>("updateData"));
 
         items = MahaiKudeaketa.mahaiaLortu();
         this.tabla.setItems(items);
+        setErabiltzailea(lblUser.getText());
     }
     @FXML
     private void ezabatu() {
@@ -83,6 +95,8 @@ public class MahaiaKenduController extends BaseController {
             Parent root = xload.load();
             MahaiaController mhc = xload.getController();
             mhc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mhc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));

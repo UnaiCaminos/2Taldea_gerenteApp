@@ -23,7 +23,10 @@ public class LangileKudeaketa {
                         rs.getString("pasahitza"),
                         rs.getString("korreoa"),
                         rs.getString("telefonoa"),
-                        rs.getString("postua")
+                        rs.getString("postua"),
+                        rs.getDate("updateData"),
+                        rs.getString("updateBy")
+
                 ));
             }
         } catch (ClassNotFoundException e) {
@@ -77,5 +80,59 @@ public class LangileKudeaketa {
             System.out.println("Arazoa emen dago");
         }
         return konexioa;
+    }
+    public static boolean langileaKendu(int id) {
+
+        String query = "DELETE FROM langilea WHERE id = ?";
+        Connection conn = null;
+        try{
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, id);
+            int rowsAffected = stmt.executeUpdate();
+
+            boolean deleteExitoso = rowsAffected > 0;
+
+            if (deleteExitoso) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static boolean langileaAldatu(String dni, String izena, String abizena, String pasahitza, String korreoa, String telefonoa, String postua, Date updateData, String updateBy, int id) throws SQLException {
+
+        String query = "UPDATE erreserba SET dni = ?, izena = ?, abizena = ?, pasahitza = ?, korreoa = ?, telefonoa = ?, postua = ?, updateData = ?, updateBy = ?  WHERE id = ?";
+        Connection conn = null;
+        try{
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, dni);
+            stmt.setString(2, izena);
+            stmt.setString(3, abizena);
+            stmt.setString(4, pasahitza);
+            stmt.setString(5, korreoa);
+            stmt.setString(6, telefonoa);
+            stmt.setString(7,postua);
+            stmt.setDate(8,updateData);
+            stmt.setString(9,updateBy);
+            stmt.setInt(10,id);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            boolean updateExitoso = rowsAffected > 0;
+
+            if (updateExitoso) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

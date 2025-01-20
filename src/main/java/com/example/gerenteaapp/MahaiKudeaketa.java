@@ -20,7 +20,10 @@ public class MahaiKudeaketa {
                 lista.add(new Mahaia(
                         rs.getInt ("id"),
                         rs.getInt("mahaiZenbakia"),
-                        rs.getInt("kopurua")
+                        rs.getInt("kopurua"),
+                        rs.getDate("updateData"),
+                        rs.getString("updateBy")
+
                 ));
             }
         } catch (ClassNotFoundException e) {
@@ -67,7 +70,9 @@ public class MahaiKudeaketa {
                 lista.add(new Mahaia(
                         rs.getInt("id"),
                         rs.getInt("mahaiZenbakia"),
-                        rs.getInt("kopurua")
+                        rs.getInt("kopurua"),
+                        rs.getDate("updateData"),
+                        rs.getString("updateBy")
                 ));
             }
         } catch (ClassNotFoundException e) {
@@ -98,15 +103,17 @@ public class MahaiKudeaketa {
             throw new RuntimeException(e);
         }
     }
-    public static boolean mahaiaAldatu(int id, int kopurua) {
+    public static boolean mahaiaAldatu(int id, int kopurua, String updateBy, Date updateData) {
 
-        String query = "UPDATE mahaia SET kopurua = ? WHERE id = ?";
+        String query = "UPDATE mahaia SET kopurua = ?, updateData = ?, updateBy = ? WHERE id = ?";
         Connection conn = null;
         try{
             conn = DBconexion.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, kopurua);
             stmt.setInt(2, id);
+            stmt.setDate(3, updateData);
+            stmt.setString(4, updateBy);
             int rowsAffected = stmt.executeUpdate();
 
             boolean updateExitoso = rowsAffected > 0;

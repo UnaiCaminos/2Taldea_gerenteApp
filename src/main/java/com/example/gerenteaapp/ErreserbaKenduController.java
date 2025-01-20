@@ -5,13 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.xml.crypto.Data;
-import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -21,7 +18,7 @@ public class ErreserbaKenduController extends BaseController{
     @FXML
     private TableView<Erreserba> tabla;
     @FXML
-    private TableColumn<Erreserba, String> idColumn;
+    private TableColumn<Erreserba, Integer> columnId;
     @FXML
     private TableColumn<Erreserba, String> izenaColumn;
     @FXML
@@ -38,11 +35,16 @@ public class ErreserbaKenduController extends BaseController{
     private TableColumn<Erreserba, String> updateByColumn;
     @FXML
     private ObservableList<Erreserba> items;
+    @FXML
+    Label lblUser;
 
+    void setErabiltzailea(String izena){
+        lblUser.setText(izena);
+    }
     @FXML
     private void initialize() throws SQLException {
 
-        this.idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        this.columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.izenaColumn.setCellValueFactory(new PropertyValueFactory<>("izena"));
         this.numMesaColumn.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.dataColumn.setCellValueFactory(new PropertyValueFactory<>("data"));
@@ -53,6 +55,7 @@ public class ErreserbaKenduController extends BaseController{
 
         items = ErreserbaKudeaketa.erreserbaLortu();
         this.tabla.setItems(items);
+        setErabiltzailea(lblUser.getText());
     }
 
     @FXML
@@ -63,6 +66,9 @@ public class ErreserbaKenduController extends BaseController{
             Parent root = load2.load();
             ErreserbaController ec = load2.getController();
             ec.setStage(usingStage);
+            String izena = lblUser.getText();
+            ec.setErabiltzailea(izena);
+
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -99,6 +105,9 @@ public class ErreserbaKenduController extends BaseController{
             Parent root = xload.load();
             ErreserbaController mhc = xload.getController();
             mhc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mhc.setErabiltzailea(izena);
+
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,16 +24,29 @@ public class MahaiaController extends BaseController {
     @FXML
     private TableColumn<Mahaia, Integer> columKomensal;
     @FXML
+    private TableColumn<Mahaia, Integer> columnUpdateBy;
+    @FXML
+    private TableColumn<Mahaia, Integer> columnUpdateData;
+    @FXML
     private ObservableList<Mahaia> items;
+    @FXML
+    Label lblUser;
+
+    void setErabiltzailea(String izena){
+        lblUser.setText(izena);
+    }
 
     @FXML
     private void initialize() throws SQLException {
 
         this.columNumeroMesa.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.columKomensal.setCellValueFactory(new PropertyValueFactory<>("kopurua"));
+        this.columnUpdateData.setCellValueFactory(new PropertyValueFactory<>("updateData"));
+        this.columnUpdateBy.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
 
         items = MahaiKudeaketa.mahaiaLortu();
         this.tabla.setItems(items);
+        setErabiltzailea(lblUser.getText());
     }
 
     @FXML
@@ -43,6 +57,8 @@ public class MahaiaController extends BaseController {
             Parent root = fxmlLoad1.load();
             GehituMahaiaController gc = fxmlLoad1.getController();
             gc.setStage(usingStage);
+            String izena = lblUser.getText();
+            gc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -62,6 +78,8 @@ public class MahaiaController extends BaseController {
             Parent root = fxmlLoad.load();
             MenuController mnc = fxmlLoad.getController();
             mnc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mnc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -82,6 +100,8 @@ public class MahaiaController extends BaseController {
             Parent root = fxmlLoad1.load();
             MahaiaKenduController mkc = fxmlLoad1.getController();
             mkc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mkc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -100,6 +120,8 @@ public class MahaiaController extends BaseController {
             Parent root = fxmlLoad1.load();
             MahaiaAldatuController mac = fxmlLoad1.getController();
             mac.setStage(usingStage);
+            String izena = lblUser.getText();
+            mac.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -109,8 +131,5 @@ public class MahaiaController extends BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
-
-
 }

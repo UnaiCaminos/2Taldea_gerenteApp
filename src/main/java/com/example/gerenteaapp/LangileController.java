@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,10 +35,19 @@ public class LangileController extends BaseController {
     @FXML
     private TableColumn<Langilea, String> columnPostua;
     @FXML
-    private TableColumn<Langilea, Boolean> columnTxatBaimena;
+    private TableColumn<Langilea, String> columnUpdateData;
+    @FXML
+    private TableColumn<Langilea, String> columnUpdateBy;
 
     @FXML
     private ObservableList<Langilea> items;
+
+    @FXML
+    Label lblUser;
+
+    void setErabiltzailea(String izena){
+        lblUser.setText(izena);
+    }
 
     @FXML
     private void initialize() throws SQLException {
@@ -49,9 +59,12 @@ public class LangileController extends BaseController {
         this.columnKorreoa.setCellValueFactory(new PropertyValueFactory<>("korreoa"));
         this.columnTelefonoa.setCellValueFactory(new PropertyValueFactory<>("telefonoa"));
         this.columnPostua.setCellValueFactory(new PropertyValueFactory<>("postua"));
+        this.columnUpdateData.setCellValueFactory(new PropertyValueFactory<>("updateData"));
+        this.columnUpdateBy.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
 
-        items = com.example.gerenteaapp.LangileKudeaketa.langileaLortu();
+        items = LangileKudeaketa.langileaLortu();
         this.tabla.setItems(items);
+        setErabiltzailea(lblUser.getText());
     }
 
     @FXML
@@ -62,6 +75,8 @@ public class LangileController extends BaseController {
             Parent root = loada.load();
             GehituLangileController glc = loada.getController();
             glc.setStage(usingStage);
+            String izena = lblUser.getText();
+            glc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -81,6 +96,8 @@ public class LangileController extends BaseController {
             Parent root = loadx.load();
             MenuController mnc = loadx.getController();
             mnc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mnc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -93,9 +110,47 @@ public class LangileController extends BaseController {
 
     }
     @FXML
-    private void kendu() {}
+    private void kendu() {
+        try{
+
+            FXMLLoader loadx = new FXMLLoader(getClass().getResource("langileaKenduView.fxml"));
+            Parent root = loadx.load();
+            LangileaKenduController mnc = loadx.getController();
+            mnc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mnc.setErabiltzailea(izena);
+
+            usingStage.centerOnScreen();
+            usingStage.setScene(new Scene(root));
+            usingStage.setTitle("Langilea Kendu");
+            usingStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
-    private void aldatu() {}
+    private void aldatu() {
+        try{
+
+            FXMLLoader loadx = new FXMLLoader(getClass().getResource("langileaAldatuView.fxml"));
+            Parent root = loadx.load();
+            LangileaAldatuController mnc = loadx.getController();
+            mnc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mnc.setErabiltzailea(izena);
+
+
+            usingStage.centerOnScreen();
+            usingStage.setScene(new Scene(root));
+            usingStage.setTitle("Langilea Aldatu");
+            usingStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }

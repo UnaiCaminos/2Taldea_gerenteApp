@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class InicioSesionController extends BaseController{
@@ -17,7 +17,9 @@ public class InicioSesionController extends BaseController{
     private TextField userText;
     @FXML
     private PasswordField pwdText;
-
+    private String setErabiltzailea(String user){
+        return user;
+    }
     @FXML
     private void sesioaHasi(){
         String user = userText.getText();
@@ -39,6 +41,7 @@ public class InicioSesionController extends BaseController{
                 Parent root = loader.load();
                 MenuController mc = loader.getController();
                 mc.setStage(usingStage);
+                mc.setErabiltzailea(user);
 
                 usingStage.centerOnScreen();
                 usingStage.setScene(new Scene(root));

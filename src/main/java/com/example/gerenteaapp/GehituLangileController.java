@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -23,27 +25,37 @@ public class GehituLangileController extends BaseController {
     @FXML
     private TextField txtTelefonoa;
     @FXML
-    private TextField txtPostua;
+    private ComboBox lanPostuaComboBox;
+    @FXML
+    Label lblUser;
+
+    void setErabiltzailea(String izena){
+        lblUser.setText(izena);
+    }
+    @FXML
+    private void initialize() {
+        setErabiltzailea(lblUser.getText());
+    }
     @FXML
     private void gehitu(){
 
         String dni = txtDni.getText();
-        String izena = txtIzena.getText();
+        String langileIzena = txtIzena.getText();
         String abizena = txtAbizena.getText();
         String pasahitza = txtPasahitza.getText();
         String korreoa = txtKorreoa.getText();
         String telefonoa = txtTelefonoa.getText();
-        String postua = txtPostua.getText();
+        String postua = lanPostuaComboBox.getValue().toString();
 
         if (!isValidDNI(dni)) {
             showAlert(Alert.AlertType.ERROR, "Error", "DNI-ak 8 zenbaki eta letra bat izan behar ditu.");
         }
 
-        if (!isValidName(izena)||!isValidName(abizena)||!isValidName(postua)) {
+        if (!isValidName(langileIzena)||!isValidName(abizena)||!isValidName(postua)) {
             showAlert(Alert.AlertType.ERROR, "Error", "Izenean, abizenean eta postuan ezin da zenbakirik ez zeinurik egon .");
         }
 
-        if (dni.isEmpty() || izena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || korreoa.isEmpty() || telefonoa.isEmpty() || postua.isEmpty()) {
+        if (dni.isEmpty() || langileIzena.isEmpty() || abizena.isEmpty() || pasahitza.isEmpty() || korreoa.isEmpty() || telefonoa.isEmpty() || postua.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Gune guztiak bete behar dira.");
             return;
         }
@@ -54,7 +66,7 @@ public class GehituLangileController extends BaseController {
 
         try {
             LangileKudeaketa l = new LangileKudeaketa();
-            l.langileaGehitu(dni, izena, abizena, pasahitza, korreoa, telefonoa, postua);
+            l.langileaGehitu(dni, langileIzena, abizena, pasahitza, korreoa, telefonoa, postua);
             showAlert(Alert.AlertType.INFORMATION, "Ondo", "Datuak zuzen sartu dira.");
         } catch (NumberFormatException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Komentsal kopurua zenbakia izan behar da.");
@@ -66,6 +78,8 @@ public class GehituLangileController extends BaseController {
             Parent root = xload.load();
             LangileController lc = xload.getController();
             lc.setStage(usingStage);
+            String izena = lblUser.getText();
+            lc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -96,6 +110,8 @@ public class GehituLangileController extends BaseController {
             Parent root = fLoad.load();
             LangileController lc = fLoad.getController();
             lc.setStage(usingStage);
+            String izena = lblUser.getText();
+            lc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));

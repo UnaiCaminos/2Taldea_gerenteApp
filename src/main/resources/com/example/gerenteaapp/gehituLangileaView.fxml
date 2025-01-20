@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.GehituLangileController">
     <Button fx:id="button1" alignment="CENTER" layoutX="247.0" layoutY="321.0" mnemonicParsing="false" onAction="#gehitu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #f44336;" text="Gehitu" textFill="WHITE" />
     <Button fx:id="button3" alignment="CENTER" layoutX="471.0" layoutY="368.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #4caf50;" text="Itxi" textFill="WHITE" />
@@ -19,7 +20,7 @@
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="">
         <font>
             <Font size="16.0" />
         </font></Label>
@@ -31,10 +32,19 @@
    <TextField fx:id="txtKorreoa" layoutX="300.0" layoutY="214.0" />
    <TextField fx:id="txtTelefonoa" layoutX="300.0" layoutY="242.0" />
    <TextField fx:id="txtDni" layoutX="300.0" layoutY="102.0" />
-   <TextField fx:id="txtPostua" layoutX="300.0" layoutY="270.0" />
    <Label layoutX="179.0" layoutY="158.0" text="Abizena" />
    <Label layoutX="179.0" layoutY="242.0" text="Telefonoa" />
    <Label layoutX="179.0" layoutY="186.0" text="Pasahitza" />
    <Label layoutX="179.0" layoutY="214.0" text="Korreoa" />
    <Label layoutX="179.0" layoutY="270.0" text="Postua" />
+    <ComboBox fx:id="lanPostuaComboBox" layoutX="300.0" layoutY="270.0" promptText="POSTUA" style="-fx-font-size: 12px;">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Gerentea" />
+                <String fx:value="Sukaldaria" />
+                <String fx:value="Zerbitzaria" />
+                <String fx:value="Administratzailea" />
+            </FXCollections>
+        </items>
+    </ComboBox>
 </AnchorPane>

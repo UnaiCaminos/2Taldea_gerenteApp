@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -15,6 +16,16 @@ public class GehituMahaiaController extends BaseController {
     private TextField txtMahaiZenb;
     @FXML
     private TextField txtKopurua;
+    @FXML
+    Label lblUser;
+
+    void setErabiltzailea(String izena){
+        lblUser.setText(izena);
+    }
+    @FXML
+    private void initialize() {
+        setErabiltzailea(lblUser.getText());
+    }
     @FXML
     private void gehitu(){
 
@@ -46,6 +57,8 @@ public class GehituMahaiaController extends BaseController {
             Parent root = xload.load();
             MahaiaController mhc = xload.getController();
             mhc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mhc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -69,6 +82,8 @@ public class GehituMahaiaController extends BaseController {
             Parent root = xload.load();
             MahaiaController mhc = xload.getController();
             mhc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mhc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));

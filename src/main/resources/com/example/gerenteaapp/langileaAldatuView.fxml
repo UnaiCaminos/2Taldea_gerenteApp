@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="449.0" prefWidth="674.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.LangileaAldatuController">
+    <Button fx:id="button3" alignment="CENTER" layoutX="561.0" layoutY="374.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336;" text="Itxi" textFill="WHITE" />
+    <Label layoutX="219.0" layoutY="39.0" text="Langilea aldatu">
+        <font>
+            <Font size="19.0" />
+        </font>
+    </Label>
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../images/logo.png" />
+        </image>
+    </ImageView>
+    <Label fx:id="lblUser" layoutX="592.0" layoutY="14.0" prefHeight="31.0" prefWidth="89.0" text="">
+        <font>
+            <Font size="16.0" />
+        </font></Label>
+    <TableView fx:id="tabla" editable="true" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
+        <columns>
+            <TableColumn fx:id="idColumn" text="id" />
+            <TableColumn fx:id="dniColumn" text="dni" />
+            <TableColumn fx:id="izenaColumn" text="Izena" />
+            <TableColumn fx:id="abizenaColumn" text="Abizena" />
+            <TableColumn fx:id="pasahitzaColumn" text="Pasahitza" />
+            <TableColumn fx:id="korreoaColumn" text="korreoa" />
+            <TableColumn fx:id="telefonoaColumn" text="telefonoa" />
+            <TableColumn fx:id="postuaColumn" text="Postua" />
+            <TableColumn fx:id="txatBaimenaColumn" text="Txat baimena" />
+            <TableColumn fx:id="columnUpdateBy" text="Update By" />
+            <TableColumn fx:id="columnUpdateData" text="Update Data"/>
+        </columns>
+    </TableView>
+    <Button fx:id="button2" alignment="CENTER" layoutX="443.0" layoutY="364.0" mnemonicParsing="false" onAction="#aldatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Aldatu" textFill="WHITE" />
+    <TextField fx:id="txtDni" layoutX="443.0" layoutY="140.0" prefHeight="26.0" prefWidth="150.0" promptText="Dni" />
+    <TextField fx:id="txtId" layoutX="443.0" layoutY="108.0" prefHeight="26.0" prefWidth="150.0" promptText="Aldatu nahi duzunaren id" />
+    <TextField fx:id="txtIzena" layoutX="443.0" layoutY="172.0" prefHeight="26.0" prefWidth="150.0" promptText="Data" />
+    <TextField fx:id="txtAbizena" layoutX="443.0" layoutY="204.0" promptText="Abizena" />
+    <TextField fx:id="txtPasahitza" layoutX="443.0" layoutY="236.0" promptText="Pasahitza" />
+    <TextField fx:id="txtKorreoa" layoutX="443.0" layoutY="268.0" promptText="Korreoa" />
+    <TextField fx:id="txtPostua" layoutX="443.0" layoutY="300.0" promptText="Postua" />
+   <TextField layoutX="443.0" layoutY="332.0" promptText="Telefonoa" />
+</AnchorPane>

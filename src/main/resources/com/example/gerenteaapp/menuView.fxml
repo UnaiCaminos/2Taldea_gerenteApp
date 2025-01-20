@@ -13,7 +13,7 @@
         </image>
     </ImageView>
       <Button fx:id="button4" layoutX="486.0" layoutY="338.0" mnemonicParsing="false" onAction="#saioaItxi" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #F44336;" text="Saioa itxi" />
-    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="">
         <font>
             <Font size="16.0" />
         </font></Label>

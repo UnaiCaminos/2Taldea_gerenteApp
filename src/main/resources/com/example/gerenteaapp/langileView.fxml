@@ -19,7 +19,7 @@
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="">
       <font>
          <Font size="16.0" />
       </font></Label>
@@ -32,6 +32,8 @@
             <TableColumn fx:id="columnKorreoa" text="Korreoa" />
             <TableColumn fx:id="columnTelefonoa" text="Telefonoa" />
             <TableColumn fx:id="columnPostua" text="Postua" />
+            <TableColumn fx:id="columnUpdateBy" text="UpdateBy" />
+            <TableColumn fx:id="columnUpdateData" text="UpdateData" />
         </columns>
       <opaqueInsets>
          <Insets />

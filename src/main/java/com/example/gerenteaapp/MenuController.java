@@ -4,20 +4,31 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class MenuController extends BaseController {
 
     @FXML
+    private Label lblUser;
+
+    void setErabiltzailea(String izena){
+        lblUser.setText(izena);
+    }
+    @FXML
+    private void initialize() {
+        setErabiltzailea(lblUser.getText());
+    }
+    @FXML
     private void langileKudeaketa(){
         try {
-
+            String izena = lblUser.getText();
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("langileView.fxml"));
             Parent root = loader1.load();
             LangileController lc = loader1.getController();
             lc.setStage(usingStage);
+            lc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -37,6 +48,8 @@ public class MenuController extends BaseController {
             Parent root = loader2.load();
             MahaiaController mc = loader2.getController();
             mc.setStage(usingStage);
+            String izena = lblUser.getText();
+            mc.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -56,6 +69,9 @@ public class MenuController extends BaseController {
             Parent root = loader3.load();
             ErreserbaController ec = loader3.getController();
             ec.setStage(usingStage);
+            String izena = lblUser.getText();
+            ec.setErabiltzailea(izena);
+
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));

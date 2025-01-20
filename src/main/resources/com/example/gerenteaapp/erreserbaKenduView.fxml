@@ -17,13 +17,13 @@
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="592.0" layoutY="14.0" prefHeight="31.0" prefWidth="89.0" text="Jonan">
+    <Label fx:id="lblUser" layoutX="592.0" layoutY="14.0" prefHeight="31.0" prefWidth="89.0" text="">
         <font>
             <Font size="16.0" />
         </font></Label>
     <TableView fx:id="tabla" editable="true" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
         <columns>
-            <TableColumn fx:id="columId" text="id" />
+            <TableColumn fx:id="columnId" text="id" />
             <TableColumn fx:id="izenaColumn" text="Izena" />
             <TableColumn fx:id="numMesaColumn" text="Mahai zenbakia" />
             <TableColumn fx:id="dataColumn" text="Data" />
