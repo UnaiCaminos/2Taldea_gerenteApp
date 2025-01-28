@@ -43,8 +43,9 @@ public class GehituMahaiaController extends BaseController {
 
         try {
             int kop = Integer.parseInt(kopurua);
+            int zenb = Integer.parseInt(mahaiZenb);
             MahaiKudeaketa m = new MahaiKudeaketa();
-            m.mahaiaGehitu(mahaiZenb, kop);
+            m.mahaiaGehitu(zenb, kop);
             showAlert(Alert.AlertType.INFORMATION, "Ondo", "Datuak zuzen sartu dira.");
 
         } catch (NumberFormatException e) {

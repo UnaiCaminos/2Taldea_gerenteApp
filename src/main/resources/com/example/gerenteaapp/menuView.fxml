@@ -3,21 +3,48 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="175.0" prefWidth="152.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.MenuController">
-      <HBox alignment="CENTER" />
-    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@../../../images/logo.png" />
-        </image>
-    </ImageView>
-      <Button fx:id="button4" layoutX="486.0" layoutY="338.0" mnemonicParsing="false" onAction="#saioaItxi" prefHeight="31.0" prefWidth="76.0" style="-fx-background-color: #F44336;" text="Saioa itxi" />
-    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="">
-        <font>
-            <Font size="16.0" />
-        </font></Label>
-      <Button fx:id="button3" alignment="CENTER" layoutX="63.0" layoutY="121.0" mnemonicParsing="false" onAction="#langileKudeaketa" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #69472c;" text="Langileak kudeatu" textFill="WHITE" />
-      <Button fx:id="button2" alignment="CENTER" layoutX="225.0" layoutY="121.0" mnemonicParsing="false" onAction="#mahaiKudeaketa" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #69472c;" text="Mahaiak kudeatu" textFill="WHITE" />
-      <Button fx:id="button1" alignment="CENTER" layoutX="390.0" layoutY="121.0" mnemonicParsing="false" onAction="#erreserbaKudeaketa" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #69472c;" text="Erreserbak kudeatu" textFill="WHITE" />
+<AnchorPane style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.MenuController">
+    <children>
+        <!-- Logo ampliado en la posición superior izquierda -->
+        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
+                   AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0">
+            <image>
+                <Image url="@../../../images/logo.png" />
+            </image>
+        </ImageView>
+
+        <!-- Label ampliado en la posición superior derecha -->
+        <Label fx:id="lblUser" prefHeight="50.0" prefWidth="150.0" text=""
+               AnchorPane.topAnchor="30.0" AnchorPane.rightAnchor="30.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+
+        <!-- Caja horizontal para los 3 botones grandes, centrados -->
+        <HBox alignment="CENTER" spacing="30.0"
+              AnchorPane.topAnchor="300.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0">
+            <children>
+                <Button fx:id="button3" alignment="CENTER" mnemonicParsing="false" onAction="#langileKudeaketa"
+                        prefHeight="150.0" prefWidth="150.0"
+                        style="-fx-background-color: #69472c;" text="Langileak kudeatu" textFill="WHITE" />
+                <Button fx:id="button2" alignment="CENTER" mnemonicParsing="false" onAction="#mahaiKudeaketa"
+                        prefHeight="150.0" prefWidth="150.0"
+                        style="-fx-background-color: #69472c;" text="Mahaiak kudeatu" textFill="WHITE" />
+                <Button fx:id="button1" alignment="CENTER" mnemonicParsing="false" onAction="#erreserbaKudeaketa"
+                        prefHeight="150.0" prefWidth="150.0"
+                        style="-fx-background-color: #69472c;" text="Erreserbak kudeatu" textFill="WHITE" />
+                <Button mnemonicParsing="false" onAction="#txatKudeaketa"
+                        prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #69472c;" text="Txata" textFill="WHITE" />
+            </children>
+        </HBox>
+
+        <!-- Botón Saioa itxi ampliado en la esquina inferior derecha -->
+        <Button fx:id="button4" mnemonicParsing="false" onAction="#saioaItxi" prefHeight="50.0" prefWidth="100.0"
+                style="-fx-background-color: #F44336;" text="Saioa itxi" textFill="WHITE"
+                AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0"/>
+    </children>
 </AnchorPane>
+

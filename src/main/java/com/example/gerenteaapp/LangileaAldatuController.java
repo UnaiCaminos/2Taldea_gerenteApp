@@ -21,6 +21,8 @@ public class LangileaAldatuController extends BaseController {
     @FXML
     private TextField txtId;
     @FXML
+    private TextField txtDni;
+    @FXML
     private TextField txtIzena;
     @FXML
     private TextField txtAbizena;
@@ -31,7 +33,9 @@ public class LangileaAldatuController extends BaseController {
     @FXML
     private TextField txtPasahitza;
     @FXML
-    private TextField txtPostua;
+    private TextField txtTxatBaimena;
+    @FXML
+    private ComboBox lanPostuaComboBox;
     @FXML
     private TableView<Langilea> tabla;
     @FXML
@@ -53,9 +57,9 @@ public class LangileaAldatuController extends BaseController {
     @FXML
     private TableColumn<Langilea, String> txatBaimenaColumn;
     @FXML
-    private TableColumn<Langilea, String> updateDataColumn;
+    private TableColumn<Langilea, String> columnUpdateBy;
     @FXML
-    private TableColumn<Langilea, String> updateByColumn;
+    private TableColumn<Langilea, String> columnUpdateData;
     @FXML
     private ObservableList<Langilea> items;
     @FXML
@@ -78,8 +82,8 @@ public class LangileaAldatuController extends BaseController {
         this.telefonoaColumn.setCellValueFactory(new PropertyValueFactory<>("telefonoa"));
         this.postuaColumn.setCellValueFactory(new PropertyValueFactory<>("postua"));
         this.txatBaimenaColumn.setCellValueFactory(new PropertyValueFactory<>("txatBaimena"));
-        this.updateDataColumn.setCellValueFactory(new PropertyValueFactory<>("updateData"));
-        this.updateByColumn.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
+        this.columnUpdateBy.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
+        this.columnUpdateData.setCellValueFactory(new PropertyValueFactory<>("updateData"));
 
         items = LangileKudeaketa.langileaLortu();
         this.tabla.setItems(items);
@@ -113,11 +117,12 @@ public class LangileaAldatuController extends BaseController {
         String Id = txtId.getText();
         String langileIzena = txtIzena.getText();
         String abizena = txtAbizena.getText();
-        String postua = txtPostua.getText();
+        String baimena = txtTxatBaimena.getText();
         String korreoa = txtKorreoa.getText();
         String pasahitza = txtPasahitza.getText();
         String telefonoa = txtTelefonoa.getText();
-        String dni = txtId.getText();
+        String dni = txtDni.getText();
+        String postua = lanPostuaComboBox.getValue().toString();
 
         if (Id.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Gune guztiak bete behar dira.");
@@ -130,9 +135,10 @@ public class LangileaAldatuController extends BaseController {
         try {
             int id = Integer.parseInt(Id);
             Date updateData = Date.valueOf(timestamp);
+            Boolean txatBaimena = Boolean.parseBoolean(baimena);
 
             LangileKudeaketa l = new LangileKudeaketa();
-            l.langileaAldatu(dni, langileIzena, abizena, pasahitza, korreoa, telefonoa, postua, updateData, updateBy, id);
+            l.langileaAldatu(dni, langileIzena, abizena, pasahitza, korreoa, telefonoa, postua, txatBaimena, updateData, updateBy, id);
             showAlert(Alert.AlertType.INFORMATION, "Ondo", "Datuak zuzen aldatu dira.");
 
         } catch (SQLException e) {

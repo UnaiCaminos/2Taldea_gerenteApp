@@ -5,29 +5,62 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.GehituErreserbaController">
-    <Button fx:id="button1" alignment="CENTER" layoutX="252.0" layoutY="295.0" mnemonicParsing="false" onAction="#gehitu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #f44336;" text="Gehitu" textFill="WHITE" />
-    <Button fx:id="button3" alignment="CENTER" layoutX="471.0" layoutY="353.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #4caf50;" text="Itxi" textFill="WHITE" />
-    <Label layoutX="218.0" layoutY="60.0" text="Erreserbak gehitu">
+<AnchorPane prefHeight="601.0" prefWidth="986.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.GehituErreserbaController">
+    <!-- Título -->
+    <Label alignment="CENTER" text="Erreserbak Gehitu" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="20.0">
         <font>
             <Font size="19.0" />
         </font>
     </Label>
-    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+
+    <!-- Logo -->
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
         <image>
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="510.0" layoutY="33.0" prefHeight="31.0" prefWidth="89.0" text="">
+
+    <!-- Usuario -->
+    <Label fx:id="lblUser" prefHeight="31.0" prefWidth="89.0" text="" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
         <font>
             <Font size="16.0" />
-        </font></Label>
-    <TextField fx:id="txtIzena" layoutX="300.0" layoutY="130.0" />
-    <TextField fx:id="txtMahaiZenb" layoutX="300.0" layoutY="158.0" />
-    <Label layoutX="179.0" layoutY="130.0" text="Izena" />
-    <TextField fx:id="txtPertsonaKop" layoutX="300.0" layoutY="214.0" />
-    <Label layoutX="179.0" layoutY="158.0" text="Mahai zenbakia" />
-    <Label layoutX="179.0" layoutY="186.0" text="Data" />
-    <Label layoutX="179.0" layoutY="214.0" text="Pertsona kopurua" />
-   <DatePicker fx:id="dpData" layoutX="300.0" layoutY="186.0" />
+        </font>
+    </Label>
+
+    <!-- Formulario -->
+    <VBox alignment="CENTER" spacing="10.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="120.0">
+      <children>
+        <GridPane alignment="CENTER" hgap="10.0" vgap="10.0">
+           <columnConstraints>
+               <ColumnConstraints halignment="LEFT" minWidth="80.0" />
+               <ColumnConstraints minWidth="200.0" />
+           </columnConstraints>
+           <!-- Nombre -->
+           <Label text="Izena:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+           <TextField fx:id="txtIzena" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+           <!-- Mesa Número -->
+           <Label text="Mahai Zenbakia:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+           <TextField fx:id="txtMahaiZenb" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+           <!-- Fecha -->
+           <Label text="Data:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+           <DatePicker fx:id="dpData" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="201.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+           <!-- Número de Personas -->
+           <Label text="Pertsona Kopurua:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+           <TextField fx:id="txtPertsonaKop" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+           <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+           </rowConstraints>
+        </GridPane>
+      </children>
+    </VBox>
+
+    <!-- Botón Gehitu centrado debajo del formulario -->
+    <Button fx:id="button1" alignment="CENTER" layoutX="617.0" layoutY="399.0" onAction="#gehitu" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #4caf50;" text="Gehitu" textFill="WHITE" AnchorPane.leftAnchor="617.0" AnchorPane.topAnchor="399.0" />
+    <Button fx:id="button3" alignment="CENTER" layoutX="1373.0" layoutY="713.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #f44336;" text="Atzera" textFill="WHITE" />
 </AnchorPane>

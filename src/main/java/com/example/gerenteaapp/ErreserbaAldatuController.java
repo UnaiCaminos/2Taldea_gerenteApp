@@ -7,11 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,8 +15,6 @@ import java.sql.Date;
 
 public class ErreserbaAldatuController extends BaseController {
 
-    @FXML
-    private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     @FXML
     private TextField txtId;
     @FXML
@@ -86,6 +80,8 @@ public class ErreserbaAldatuController extends BaseController {
             Parent root = load2.load();
             ErreserbaController ec = load2.getController();
             ec.setStage(usingStage);
+            String izena = lblUser.getText();
+            ec.setErabiltzailea(izena);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));
@@ -146,6 +142,8 @@ public class ErreserbaAldatuController extends BaseController {
             Parent root = xload.load();
             ErreserbaController mhc = xload.getController();
             mhc.setStage(usingStage);
+            String name = lblUser.getText();
+            mhc.setErabiltzailea(name);
 
             usingStage.centerOnScreen();
             usingStage.setScene(new Scene(root));

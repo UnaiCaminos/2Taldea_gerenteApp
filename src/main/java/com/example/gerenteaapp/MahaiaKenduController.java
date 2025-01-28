@@ -25,9 +25,9 @@ public class MahaiaKenduController extends BaseController {
     @FXML
     private TableColumn<Mahaia, Integer> columKomensal;
     @FXML
-    private TableColumn<Mahaia, Data> updateDataColumn;
+    private TableColumn<Mahaia, Data> columnUpdateData;
     @FXML
-    private TableColumn<Mahaia, String> updateByColumn;
+    private TableColumn<Mahaia, String> columnUpdateBy;
     @FXML
     private ObservableList<Mahaia> items;
     @FXML
@@ -40,9 +40,9 @@ public class MahaiaKenduController extends BaseController {
     private void itxi() {
         try{
 
-            FXMLLoader fxmlLoad = new FXMLLoader(getClass().getResource("menuView.fxml"));
+            FXMLLoader fxmlLoad = new FXMLLoader(getClass().getResource("mahaiaView.fxml"));
             Parent root = fxmlLoad.load();
-            MenuController mnc = fxmlLoad.getController();
+            MahaiaController mnc = fxmlLoad.getController();
             mnc.setStage(usingStage);
             String izena = lblUser.getText();
             mnc.setErabiltzailea(izena);
@@ -63,8 +63,8 @@ public class MahaiaKenduController extends BaseController {
         this.columId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.columNumeroMesa.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.columKomensal.setCellValueFactory(new PropertyValueFactory<>("kopurua"));
-        this.updateByColumn.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
-        this.updateDataColumn.setCellValueFactory(new PropertyValueFactory<>("updateData"));
+        this.columnUpdateBy.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
+        this.columnUpdateData.setCellValueFactory(new PropertyValueFactory<>("updateData"));
 
         items = MahaiKudeaketa.mahaiaLortu();
         this.tabla.setItems(items);

@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="449.0" prefWidth="674.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.ErreserbaAldatuController">
-    <Button fx:id="button3" alignment="CENTER" layoutX="561.0" layoutY="374.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336;" text="Itxi" textFill="WHITE" />
-    <Label layoutX="219.0" layoutY="39.0" text="Erreserbak aldatu">
+<AnchorPane prefHeight="601.0" prefWidth="986.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.ErreserbaAldatuController">
+    <!-- Título -->
+    <Label alignment="CENTER" text="Erreserbak Gehitu" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="20.0">
         <font>
             <Font size="19.0" />
         </font>
     </Label>
-   <DatePicker fx:id="dpData" layoutX="443.0" layoutY="172.0" />
-    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+
+    <!-- Logo -->
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
         <image>
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="592.0" layoutY="14.0" prefHeight="31.0" prefWidth="89.0" text="">
+
+    <!-- Usuario -->
+    <Label fx:id="lblUser" prefHeight="31.0" prefWidth="89.0" text="" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
         <font>
             <Font size="16.0" />
-        </font></Label>
+        </font>
+    </Label>
     <TableView fx:id="tabla" editable="true" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
         <columns>
             <TableColumn fx:id="columnId" text="id" />
@@ -33,11 +38,23 @@
             <TableColumn fx:id="updateDataColumn" text="Aktualizazio data" />
             <TableColumn fx:id="updateByColumn" text="Aktualizazioa egin duena" />
         </columns>
+        <AnchorPane.topAnchor>
+            <Double fx:value="200.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.leftAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.leftAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.rightAnchor>
     </TableView>
-    <Button fx:id="button2" alignment="CENTER" layoutX="443.0" layoutY="300.0" mnemonicParsing="false" onAction="#aldatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Aldatu" textFill="WHITE" />
-    <TextField fx:id="txtIzena" layoutX="443.0" layoutY="140.0" prefHeight="26.0" prefWidth="150.0" promptText="Izena" />
-    <TextField fx:id="txtId" layoutX="443.0" layoutY="108.0" prefHeight="26.0" prefWidth="150.0" promptText="Aldatu nahi duzunaren id" />
-   <TextField fx:id="txtMahaiZenb" layoutX="443.0" layoutY="204.0" promptText="Mahai zenbakia" />
-   <TextField fx:id="txtPertsonaKop" layoutX="443.0" layoutY="236.0" promptText="Pertsona kopurua" />
-   <TextField fx:id="txtKantzelatuta" layoutX="443.0" layoutY="268.0" promptText="Kantzelatu" />
+    <Button fx:id="button4" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0"
+            style="-fx-background-color: #F44336;" text="Atzera"
+            AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" textFill="WHITE"/>
+    <Button fx:id="button2" alignment="CENTER" layoutX="20.0" layoutY="517.0" mnemonicParsing="false" onAction="#aldatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Aldatu" textFill="WHITE" />
+    <TextField fx:id="txtIzena" layoutX="282.0" layoutY="516.0" prefHeight="26.0" prefWidth="150.0" promptText="Izena" />
+    <TextField fx:id="txtId" layoutX="123.0" layoutY="516.0" prefHeight="26.0" prefWidth="150.0" promptText="Aldatu nahi duzunaren id" />
+   <TextField fx:id="txtMahaiZenb" layoutX="441.0" layoutY="516.0" promptText="Mahai zenbakia" />
+   <TextField fx:id="txtPertsonaKop" layoutX="599.0" layoutY="516.0" promptText="Pertsona kopurua" />
+   <TextField fx:id="txtKantzelatuta" layoutX="758.0" layoutY="516.0" promptText="Kantzelatu" />
 </AnchorPane>

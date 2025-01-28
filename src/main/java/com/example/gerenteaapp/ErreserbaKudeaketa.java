@@ -9,7 +9,7 @@ public class ErreserbaKudeaketa {
         public static ObservableList<Erreserba> erreserbaLortu() throws SQLException {
             ObservableList<Erreserba> lista = FXCollections.observableArrayList();
 
-            String query = "SELECT * FROM dberronka.erreserba";
+            String query = "SELECT * FROM erreserba";
             try (Connection conn = DBconexion.getConnection();
                  Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery(query)) {

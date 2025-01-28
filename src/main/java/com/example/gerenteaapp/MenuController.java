@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
@@ -82,7 +83,33 @@ public class MenuController extends BaseController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void txatKudeaketa(){
+        LangileKudeaketa lk = new LangileKudeaketa();
+        boolean baimena = lk.baimenaTxat(lblUser.getText());
+        if(baimena) {
+            try {
 
+                FXMLLoader loader3 = new FXMLLoader(getClass().getResource("txatView.fxml"));
+                Parent root = loader3.load();
+                TxatController tc = loader3.getController();
+                tc.setStage(usingStage);
+                String izena = lblUser.getText();
+                tc.setErabiltzailea(izena);
+
+
+                usingStage.centerOnScreen();
+                usingStage.setScene(new Scene(root));
+                usingStage.setTitle("Txata");
+                usingStage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Arazoa", "Ez duzu baimenik txatean sartzeko.");
+        }
+    }
     @FXML
     private void saioaItxi(){
         try {
@@ -101,5 +128,10 @@ public class MenuController extends BaseController {
             e.printStackTrace();
         }
     }
-
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

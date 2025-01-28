@@ -36,9 +36,9 @@ public class LangileaKenduController extends BaseController{
     @FXML
     private TableColumn<Langilea, String> columnPostua;
     @FXML
-    private TableColumn<Langilea, Data> updateDataColumn;
+    private TableColumn<Langilea, Data> columnUpdateData;
     @FXML
-    private TableColumn<Langilea, String> updateByColumn;
+    private TableColumn<Langilea, String> columnUpdateBy;
     @FXML
     private ObservableList<Langilea> items;
     @FXML
@@ -58,8 +58,8 @@ public class LangileaKenduController extends BaseController{
         this.columnKorreoa.setCellValueFactory(new PropertyValueFactory<>("korreoa"));
         this.columnTelefonoa.setCellValueFactory(new PropertyValueFactory<>("telefonoa"));
         this.columnPostua.setCellValueFactory(new PropertyValueFactory<>("postua"));
-        this.updateByColumn.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
-        this.updateDataColumn.setCellValueFactory(new PropertyValueFactory<>("updateData"));
+        this.columnUpdateBy.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
+        this.columnUpdateData.setCellValueFactory(new PropertyValueFactory<>("updateData"));
 
         items = LangileKudeaketa.langileaLortu();
         this.tabla.setItems(items);
@@ -110,7 +110,7 @@ public class LangileaKenduController extends BaseController{
             try{
                 FXMLLoader xload = new FXMLLoader(getClass().getResource("langileView.fxml"));
                 Parent root = xload.load();
-                ErreserbaController mhc = xload.getController();
+                LangileController mhc = xload.getController();
                 mhc.setStage(usingStage);
                 String izena = lblUser.getText();
                 mhc.setErabiltzailea(izena);

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="100" prefWidth="100" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.TxatController">
+    <!-- Logo centrado en la parte superior -->
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../../../images/logo.png" />
+        </image>
+        <AnchorPane.topAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.leftAnchor>
+            <Double fx:value="50.0" />
+        </AnchorPane.leftAnchor>
+    </ImageView>
+
+    <!-- Label centrado en la parte superior como título -->
+    <Label fx:id="titulo" style="-fx-font-size: 18px; -fx-text-fill: black;" text="Txata">
+        <AnchorPane.topAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.leftAnchor>
+            <Double fx:value="100.0" />
+        </AnchorPane.leftAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="100.0" />
+        </AnchorPane.rightAnchor>
+    </Label>
+
+    <Label fx:id="lblUser" style="-fx-font-size: 18px; -fx-text-fill: black;" text="">
+        <AnchorPane.topAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.rightAnchor>
+    </Label>
+
+    <!-- TextArea centrado -->
+    <TextArea fx:id="txata" editable="false" prefHeight="250.0" prefWidth="60" wrapText="true">
+        <AnchorPane.topAnchor>
+            <Double fx:value="200.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.leftAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.leftAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.rightAnchor>
+    </TextArea>
+
+    <!-- TextField centrado debajo del TextArea -->
+    <TextField fx:id="mezuaField" prefHeight="26.0" prefWidth="87.0" promptText="Idatzi zure mezua...">
+        <AnchorPane.topAnchor>
+            <Double fx:value="470.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.leftAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.leftAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="82.0" />
+        </AnchorPane.rightAnchor>
+    </TextField>
+
+    <!-- Botón Bidali (Enviar) ajustado al tamaño del TextField, al lado derecho del mismo -->
+    <Button layoutX="600.0" layoutY="470.0" mnemonicParsing="false" onAction="#bidaliMezua" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: #4caf50;" text="Bidali" textFill="WHITE">
+        <AnchorPane.topAnchor>
+            <Double fx:value="470.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.rightAnchor>
+    </Button>
+
+    <!-- Botón Itxi (Cancelar) en la parte inferior derecha -->
+    <Button fx:id="button4" mnemonicParsing="false" onAction="#itxi" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F44336;" text="Atzera" textFill="WHITE">
+        <AnchorPane.bottomAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.bottomAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.rightAnchor>
+    </Button>
+</AnchorPane>

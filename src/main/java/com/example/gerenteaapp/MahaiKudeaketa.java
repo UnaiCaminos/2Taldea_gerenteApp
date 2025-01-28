@@ -11,7 +11,7 @@ public class MahaiKudeaketa {
     public static ObservableList<Mahaia> mahaiaLortu() throws SQLException {
         ObservableList<Mahaia> lista = FXCollections.observableArrayList();
 
-        String query = "SELECT * FROM dberronka.mahaia";
+        String query = "SELECT * FROM mahaia";
         try (Connection conn = DBconexion.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -21,7 +21,7 @@ public class MahaiKudeaketa {
                         rs.getInt ("id"),
                         rs.getInt("mahaiZenbakia"),
                         rs.getInt("kopurua"),
-                        rs.getDate("updateData"),
+                        rs.getDate("updateDate"),
                         rs.getString("updateBy")
 
                 ));
@@ -32,7 +32,7 @@ public class MahaiKudeaketa {
 
         return lista;
     }
-    public static boolean mahaiaGehitu(String mahaiZenb, int kop) {
+    public static boolean mahaiaGehitu(int mahaiZenbakia, int kopurua) {
 
         String query = "INSERT INTO mahaia (mahaiZenbakia, kopurua) VALUES (?, ?)";
         Connection conn = null;
@@ -40,8 +40,8 @@ public class MahaiKudeaketa {
 
             conn = DBconexion.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, mahaiZenb);
-            stmt.setInt(2, kop);
+            stmt.setInt(1, mahaiZenbakia);
+            stmt.setInt(2, kopurua);
 
             stmt.executeUpdate();
             int filasAfectadas = stmt.executeUpdate();
@@ -58,29 +58,6 @@ public class MahaiKudeaketa {
         }
     }
 
-    public static ObservableList<Mahaia> mahaiaBilatu() throws SQLException {
-        ObservableList<Mahaia> lista = FXCollections.observableArrayList();
-
-        String query = "SELECT * FROM dberronka.mahaia WHERE izena = ?";
-        try (Connection conn = DBconexion.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-
-            while (rs.next()) {
-                lista.add(new Mahaia(
-                        rs.getInt("id"),
-                        rs.getInt("mahaiZenbakia"),
-                        rs.getInt("kopurua"),
-                        rs.getDate("updateData"),
-                        rs.getString("updateBy")
-                ));
-            }
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Error de conexión a la base de datos", e);
-        }
-
-        return lista;
-    }
     public static boolean mahaiaKendu(int id) {
 
         String query = "DELETE FROM mahaia WHERE id = ?";
@@ -105,15 +82,15 @@ public class MahaiKudeaketa {
     }
     public static boolean mahaiaAldatu(int id, int kopurua, String updateBy, Date updateData) {
 
-        String query = "UPDATE mahaia SET kopurua = ?, updateData = ?, updateBy = ? WHERE id = ?";
+        String query = "UPDATE mahaia SET kopurua = ?, updateDate = ?, updateBy = ? WHERE id = ?";
         Connection conn = null;
         try{
             conn = DBconexion.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, kopurua);
-            stmt.setInt(2, id);
-            stmt.setDate(3, updateData);
-            stmt.setString(4, updateBy);
+            stmt.setInt(4, id);
+            stmt.setDate(2, updateData);
+            stmt.setString(3, updateBy);
             int rowsAffected = stmt.executeUpdate();
 
             boolean updateExitoso = rowsAffected > 0;

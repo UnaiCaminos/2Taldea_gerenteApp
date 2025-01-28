@@ -5,24 +5,31 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="449.0" prefWidth="674.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.LangileaKenduController">
-    <Button fx:id="button3" alignment="CENTER" layoutX="561.0" layoutY="374.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336;" text="Itxi" textFill="WHITE" />
-    <Label layoutX="219.0" layoutY="39.0" text="Langileak kendu">
+<?import java.lang.Double?>
+<AnchorPane prefHeight="601.0" prefWidth="986.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.LangileaKenduController">
+    <!-- Título -->
+    <Label alignment="CENTER" text="Erreserbak Gehitu" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="20.0">
         <font>
             <Font size="19.0" />
         </font>
     </Label>
-    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+
+    <!-- Logo -->
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
         <image>
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="592.0" layoutY="14.0" prefHeight="31.0" prefWidth="89.0" text="">
+
+    <!-- Usuario -->
+    <Label fx:id="lblUser" prefHeight="31.0" prefWidth="89.0" text="" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
         <font>
             <Font size="16.0" />
-        </font></Label>
+        </font>
+    </Label>
     <TableView fx:id="tabla" editable="true" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
         <columns>
+            <TableColumn fx:id="columnId" text="id" />
             <TableColumn fx:id="columnDni" text="Dni" />
             <TableColumn fx:id="columnIzena" text="Izena" />
             <TableColumn fx:id="columnAbizena" text="Abizena" />
@@ -33,7 +40,19 @@
             <TableColumn fx:id="columnUpdateBy" text="Update By" />
             <TableColumn fx:id="columnUpdateData" text="Update Data"/>
         </columns>
+        <AnchorPane.topAnchor>
+            <Double fx:value="200.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.leftAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.leftAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.rightAnchor>
     </TableView>
-    <Button fx:id="button2" alignment="CENTER" layoutX="545.0" layoutY="103.0" mnemonicParsing="false" onAction="#ezabatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Kendu" textFill="WHITE" />
-    <TextField fx:id="txtId" layoutX="443.0" layoutY="108.0" prefHeight="26.0" prefWidth="90.0" promptText="Id" />
+    <Button fx:id="button1" alignment="CENTER" layoutX="20.0" layoutY="525.0" mnemonicParsing="false" onAction="#ezabatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Kendu" textFill="WHITE" />
+    <Button fx:id="button4" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0"
+            style="-fx-background-color: #F44336;" text="Atzera"
+            AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" textFill="WHITE"/>
+    <TextField fx:id="txtId" layoutX="110" layoutY="529.0" promptText="Id" />
 </AnchorPane>

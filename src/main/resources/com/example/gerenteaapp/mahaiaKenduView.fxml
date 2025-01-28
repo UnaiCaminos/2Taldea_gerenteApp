@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import java.lang.Double?>
 <AnchorPane prefHeight="449.0" prefWidth="674.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.MahaiaKenduController">
-    <Button fx:id="button3" alignment="CENTER" layoutX="561.0" layoutY="374.0" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #F44336;" text="Itxi" textFill="WHITE" />
     <Label layoutX="219.0" layoutY="39.0" text="Mahaiak kendu">
         <font>
             <Font size="19.0" />
@@ -29,7 +29,19 @@
             <TableColumn fx:id="columnUpdateBy" text="Update By" />
             <TableColumn fx:id="columnUpdateData" text="Update Data"/>
         </columns>
+        <AnchorPane.topAnchor>
+            <Double fx:value="200.0" />
+        </AnchorPane.topAnchor>
+        <AnchorPane.leftAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.leftAnchor>
+        <AnchorPane.rightAnchor>
+            <Double fx:value="20.0" />
+        </AnchorPane.rightAnchor>
     </TableView>
-    <Button fx:id="button2" alignment="CENTER" layoutX="545.0" layoutY="103.0" mnemonicParsing="false" onAction="#ezabatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Kendu" textFill="WHITE" />
-    <TextField fx:id="txtId" layoutX="443.0" layoutY="108.0" prefHeight="26.0" prefWidth="90.0" promptText="Id" />
+    <Button fx:id="button1" alignment="CENTER" layoutX="20.0" layoutY="525.0" mnemonicParsing="false" onAction="#ezabatu" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #69472c;" text="Kendu" textFill="WHITE" />
+    <Button fx:id="button4" mnemonicParsing="false" onAction="#itxi" prefHeight="50.0" prefWidth="100.0"
+            style="-fx-background-color: #F44336;" text="Atzera"
+            AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="30.0" textFill="WHITE"/>
+    <TextField fx:id="txtId" layoutX="110" layoutY="529.0" promptText="Id" />
 </AnchorPane>

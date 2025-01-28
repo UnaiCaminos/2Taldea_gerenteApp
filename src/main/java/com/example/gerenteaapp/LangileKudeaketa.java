@@ -9,7 +9,7 @@ public class LangileKudeaketa {
     public static ObservableList<Langilea> langileaLortu() throws SQLException {
         ObservableList<Langilea> lista = FXCollections.observableArrayList();
 
-        String query = "SELECT * FROM dberronka.langilea";
+        String query = "SELECT * FROM langilea";
         try (Connection conn = DBconexion.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -24,6 +24,7 @@ public class LangileKudeaketa {
                         rs.getString("korreoa"),
                         rs.getString("telefonoa"),
                         rs.getString("postua"),
+                        rs.getBoolean("txatBaimena"),
                         rs.getDate("updateData"),
                         rs.getString("updateBy")
 
@@ -58,7 +59,7 @@ public class LangileKudeaketa {
     }
     public boolean balioztatu(String erabiltzailea, String pasahitza) {
         boolean konexioa=false;
-        String query = "SELECT COUNT(*) FROM dberronka.langilea WHERE izena = ? AND pasahitza = ? AND postua = 'Gerentea'";
+        String query = "SELECT COUNT(*) FROM langilea WHERE izena = ? AND pasahitza = ? AND postua = 'Gerentea'";
         Connection conn = null;
 
         try {
@@ -71,13 +72,17 @@ public class LangileKudeaketa {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    //return rs.getInt(1) > 0;
-                    konexioa = true;
+                     boolean aldaketa = rs.getInt(1) == 1;
+                     if (aldaketa==true) {
+                         konexioa = true;
+                     }else {
+                         konexioa = false;
+                     }
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Arazoa emen dago");
+            System.out.println("Arazoa hemen dago");
         }
         return konexioa;
     }
@@ -103,9 +108,9 @@ public class LangileKudeaketa {
             throw new RuntimeException(e);
         }
     }
-    public static boolean langileaAldatu(String dni, String izena, String abizena, String pasahitza, String korreoa, String telefonoa, String postua, Date updateData, String updateBy, int id) throws SQLException {
+    public static boolean langileaAldatu(String dni, String izena, String abizena, String pasahitza, String korreoa, String telefonoa, String postua, Boolean txatBaimena, Date updateData, String updateBy, int id) throws SQLException {
 
-        String query = "UPDATE erreserba SET dni = ?, izena = ?, abizena = ?, pasahitza = ?, korreoa = ?, telefonoa = ?, postua = ?, updateData = ?, updateBy = ?  WHERE id = ?";
+        String query = "UPDATE langilea SET dni = ?, izena = ?, abizena = ?, pasahitza = ?, korreoa = ?, telefonoa = ?, postua = ?, txatBaimena = ?, updateData = ?, updateBy = ?  WHERE id = ?";
         Connection conn = null;
         try{
             conn = DBconexion.getConnection();
@@ -117,9 +122,10 @@ public class LangileKudeaketa {
             stmt.setString(5, korreoa);
             stmt.setString(6, telefonoa);
             stmt.setString(7,postua);
-            stmt.setDate(8,updateData);
-            stmt.setString(9,updateBy);
-            stmt.setInt(10,id);
+            stmt.setBoolean(8,txatBaimena);
+            stmt.setDate(9,updateData);
+            stmt.setString(10,updateBy);
+            stmt.setInt(11,id);
 
             int rowsAffected = stmt.executeUpdate();
 
@@ -134,5 +140,24 @@ public class LangileKudeaketa {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+    public boolean baimenaTxat(String erabiltzailea) {
+        boolean baimena=false;
+        String query = "SELECT COUNT(*) FROM langilea WHERE izena = ? AND txatBaimena = 1";
+        Connection conn = null;
+
+        try {
+
+            conn = DBconexion.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, erabiltzailea);
+
+            baimena = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            baimena = false;
+            System.out.println("Arazoa emen dago");
+        }
+        return baimena;
     }
 }

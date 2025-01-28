@@ -29,9 +29,9 @@ public class MahaiaAldatuController extends BaseController {
     @FXML
     private TableColumn<Mahaia, Integer> columKomensal;
     @FXML
-    private TableColumn<Mahaia, Data> updateDataColumn;
+    private TableColumn<Mahaia, Data> columnUpdateData;
     @FXML
-    private TableColumn<Mahaia, String> updateByColumn;
+    private TableColumn<Mahaia, String> columnUpdateBy;
     @FXML
     private ObservableList<Mahaia> items;
     @FXML
@@ -68,8 +68,8 @@ public class MahaiaAldatuController extends BaseController {
         this.columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.columNumeroMesa.setCellValueFactory(new PropertyValueFactory<>("mahaiZenbakia"));
         this.columKomensal.setCellValueFactory(new PropertyValueFactory<>("kopurua"));
-        this.updateByColumn.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
-        this.updateDataColumn.setCellValueFactory(new PropertyValueFactory<>("updateData"));
+        this.columnUpdateBy.setCellValueFactory(new PropertyValueFactory<>("updateBy"));
+        this.columnUpdateData.setCellValueFactory(new PropertyValueFactory<>("updateData"));
 
         items = MahaiKudeaketa.mahaiaLortu();
         this.tabla.setItems(items);
