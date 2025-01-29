@@ -36,7 +36,7 @@ public class TxatController extends BaseController {
     // Método para inicializar la conexión con el servidor
     public void initialize() {
         try {
-            socket = new Socket("localhost", 5555);  // Establecer la conexión con el servidor en el puerto 5555
+            socket = new Socket("192.168.115.158", 5555);  // Establecer la conexión con el servidor en el puerto 5555
             out = new PrintWriter(socket.getOutputStream(), true);  // Se configura el output stream
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));  // Flujo de entrada
 
@@ -80,19 +80,6 @@ public class TxatController extends BaseController {
             mezuaField.clear(); // Limpiar el campo de texto después de enviar el mensaje
         } else {
             txata.appendText("Ezin da mezua hutsik bidali.\n");  // Si el mensaje está vacío, mostrar un error
-        }
-    }
-
-    // Método para cerrar la conexión y terminar la aplicación
-    @FXML
-    private void itxiKonexioa() {
-        try {
-            if (socket != null && !socket.isClosed()) {
-                socket.close();  // Cerrar la conexión del socket si está abierta
-            }
-            System.exit(0);  // Terminar la aplicación
-        } catch (IOException e) {
-            txata.appendText("Error al cerrar la conexión: " + e.getMessage() + "\n");
         }
     }
 
