@@ -19,7 +19,7 @@
     <Label text="Erreserbak kudeatu"
            AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" alignment="CENTER">
         <font>
-            <Font size="22.0" />
+            <Font size="19.0" />
         </font>
     </Label>
 

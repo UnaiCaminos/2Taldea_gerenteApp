@@ -9,13 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Calendar;
 
 public class LangileaAldatuController extends BaseController {
     @FXML

@@ -25,7 +25,7 @@
     <!-- Usuario -->
     <Label fx:id="lblUser" prefHeight="31.0" prefWidth="89.0" text="" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
         <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
         </font>
     </Label>
 

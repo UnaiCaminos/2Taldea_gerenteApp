@@ -7,20 +7,26 @@
 
 <?import java.lang.Double?>
 <AnchorPane prefHeight="449.0" prefWidth="674.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.MahaiaKenduController">
-    <Label layoutX="219.0" layoutY="39.0" text="Mahaiak kendu">
+    <!-- Título -->
+    <Label alignment="CENTER" text="Mahaiak kendu" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="20.0">
         <font>
             <Font size="19.0" />
         </font>
     </Label>
-    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+
+    <!-- Logo -->
+    <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="10.0">
         <image>
             <Image url="@../../../images/logo.png" />
         </image>
     </ImageView>
-    <Label fx:id="lblUser" layoutX="592.0" layoutY="14.0" prefHeight="31.0" prefWidth="89.0" text="">
+
+    <!-- Usuario -->
+    <Label fx:id="lblUser" prefHeight="31.0" prefWidth="89.0" text="" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
         <font>
-            <Font size="16.0" />
-        </font></Label>
+            <Font size="18.0" />
+        </font>
+    </Label>
     <TableView fx:id="tabla" editable="true" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
         <columns>
             <TableColumn fx:id="columId" text="id" />

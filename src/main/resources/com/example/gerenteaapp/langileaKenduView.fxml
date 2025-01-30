@@ -8,7 +8,7 @@
 <?import java.lang.Double?>
 <AnchorPane prefHeight="601.0" prefWidth="986.0" style="-fx-background-color: BFAB92FF;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteaapp.LangileaKenduController">
     <!-- Título -->
-    <Label alignment="CENTER" text="Erreserbak Gehitu" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="20.0">
+    <Label alignment="CENTER" text="Langileak kendu" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="20.0">
         <font>
             <Font size="19.0" />
         </font>
@@ -24,7 +24,7 @@
     <!-- Usuario -->
     <Label fx:id="lblUser" prefHeight="31.0" prefWidth="89.0" text="" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
         <font>
-            <Font size="16.0" />
+            <Font size="18.0" />
         </font>
     </Label>
     <TableView fx:id="tabla" editable="true" layoutX="127.0" layoutY="100.0" prefHeight="300.0" prefWidth="300.0">
